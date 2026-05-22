@@ -350,8 +350,8 @@ export function playSwitchSound(type: SwitchType, volume = 0.5, pitch = 1.0, key
     if (isLoaded && buffers.soundSprite) {
       if (type === "zenith" || type === "obsidian" || type === "sapphire") {
         const config = DEFAULT_CONFIG[keyId] || DEFAULT_CONFIG["30"];
-        const startOffset = config[0] / 10000; // tenths of ms -> seconds
-        const duration = config[1] / 10000; // tenths of ms -> seconds
+        const startOffset = config[0] / 1000; // ms -> seconds
+        const duration = config[1] / 1000; // ms -> seconds
 
         if (type === "sapphire") {
           // Sharp clicky, speed 1.6x
