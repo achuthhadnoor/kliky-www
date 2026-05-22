@@ -87,13 +87,13 @@ export function CenterPlayground({
   return (
     <div className="flex flex-col h-full space-y-6">
       {/* Sandbox Header with Dynamic Sound Wave Visualizer */}
-      <div className="flex items-center justify-between pb-3 border-b border-zinc-900/60">
+      <div className="flex items-center justify-between pb-3 border-b border-zinc-200 dark:border-zinc-900/60">
         <div>
-          <h3 className="text-sm font-semibold tracking-wide uppercase text-zinc-400 font-mono flex items-center gap-2">
+          <h3 className="text-sm font-semibold tracking-wide uppercase text-zinc-500 dark:text-zinc-400 font-mono flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-brand animate-ping" />
             Live Typing Sandbox
           </h3>
-          <p className="text-[11px] text-zinc-500 font-mono mt-0.5">
+          <p className="text-[11px] text-zinc-400 dark:text-zinc-500 font-mono mt-0.5">
             Active Profile: <span className="text-brand font-semibold">{activeSwitchLabel}</span>
           </p>
         </div>
@@ -115,7 +115,7 @@ export function CenterPlayground({
           onChange={handleTextChange}
           onKeyDown={handleKeyDown}
           placeholder="Start typing right here to experience Kliky... Actuate your laptop keys and hear the dynamic clack!"
-          className="w-full h-full min-h-[300px] lg:min-h-0 resize-none rounded-2xl glass-panel p-6 outline-none text-zinc-100 placeholder-zinc-600 font-mono text-base leading-relaxed tracking-wide transition duration-300 focus:border-brand/40 focus:ring-1 focus:ring-brand/30 selection:bg-brand/20"
+          className="w-full h-full min-h-[300px] lg:min-h-0 resize-none rounded-2xl glass-panel p-6 outline-none text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 font-mono text-base leading-relaxed tracking-wide transition duration-300 focus:border-brand/40 focus:ring-1 focus:ring-brand/30 selection:bg-brand/20"
         />
 
         {/* Small floating action indicators inside textarea */}
@@ -123,7 +123,7 @@ export function CenterPlayground({
           {text.length > 0 && (
             <button
               onClick={handleReset}
-              className="px-3 py-1.5 rounded-lg bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800/80 text-[11px] font-mono text-zinc-400 hover:text-white transition cursor-pointer"
+              className="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800/80 text-[11px] font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition cursor-pointer"
             >
               Clear Sandbox
             </button>
@@ -134,21 +134,21 @@ export function CenterPlayground({
       {/* Typing Metrics Deck */}
       <div className="grid grid-cols-3 gap-4 font-mono">
         <div className="glass-panel rounded-xl p-4 flex flex-col items-center justify-center text-center">
-          <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold">Speed</span>
-          <span className="text-2xl font-bold text-zinc-100 mt-1">
-            {wpm} <span className="text-xs text-zinc-500 font-normal">WPM</span>
+          <span className="text-[10px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold">Speed</span>
+          <span className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mt-1">
+            {wpm} <span className="text-xs text-zinc-400 dark:text-zinc-500 font-normal">WPM</span>
           </span>
         </div>
         
         <div className="glass-panel rounded-xl p-4 flex flex-col items-center justify-center text-center">
-          <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold">Keys hit</span>
-          <span className="text-2xl font-bold text-zinc-100 mt-1">
-            {text.length} <span className="text-xs text-zinc-500 font-normal">strokes</span>
+          <span className="text-[10px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold">Keys hit</span>
+          <span className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mt-1">
+            {text.length} <span className="text-xs text-zinc-400 dark:text-zinc-500 font-normal">strokes</span>
           </span>
         </div>
 
         <div className="glass-panel rounded-xl p-4 flex flex-col items-center justify-center text-center">
-          <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold">Latency</span>
+          <span className="text-[10px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold">Latency</span>
           <span className="text-2xl font-bold text-brand mt-1">
             &lt; 3<span className="text-xs font-normal">ms</span>
           </span>

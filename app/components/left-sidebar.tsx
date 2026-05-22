@@ -19,7 +19,7 @@ export function LeftSidebar() {
             />
           </div>
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-white font-sans flex items-center">
+            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white font-sans flex items-center">
               kliky<span className="text-brand">.</span>
             </h1>
             <p className="text-xs font-semibold uppercase tracking-wider text-brand/80 font-mono">
@@ -28,16 +28,16 @@ export function LeftSidebar() {
           </div>
         </div>
 
-        <h2 className="text-2xl font-semibold leading-snug tracking-tight text-zinc-100 font-sans">
+        <h2 className="text-2xl font-semibold leading-snug tracking-tight text-zinc-800 dark:text-zinc-100 font-sans">
           Bring the tactile joy of mechanical typing to your quiet laptop.
         </h2>
 
-        <p className="text-sm leading-relaxed text-zinc-400 font-sans">
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 font-sans">
           Kliky is a lightweight background application that plays highly satisfying mechanical key sounds instantly as you type on your physical laptop keyboard.
         </p>
 
         {/* Benefits bullets */}
-        <ul className="space-y-3 pt-2 text-xs font-mono text-zinc-400">
+        <ul className="space-y-3 pt-2 text-xs font-mono text-zinc-500 dark:text-zinc-400">
           <li className="flex items-start">
             <span className="text-brand mr-2">⚡</span> Works globally across all apps and browsers.
           </li>
@@ -51,11 +51,11 @@ export function LeftSidebar() {
       </div>
 
       {/* Download Action Section */}
-      <div className="space-y-3 pt-6 border-t border-zinc-900">
+      <div className="space-y-3 pt-6 border-t border-zinc-200 dark:border-zinc-900">
         {/* macOS button */}
         <a
           href="#"
-          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand to-[#ff8056] py-3.5 text-xs font-bold text-white shadow-xl hover:shadow-brand/20 active:scale-95 transition"
+          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand to-[#d946ef] py-3.5 text-xs font-bold text-white shadow-xl hover:shadow-brand/20 active:scale-95 transition"
         >
           {/* Apple Download Icon */}
           <svg
@@ -70,11 +70,11 @@ export function LeftSidebar() {
         {/* Windows button */}
         <a
           href="#"
-          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl glass-panel py-3.5 text-xs font-bold text-white border border-zinc-800 hover:border-zinc-700 active:scale-95 transition bg-zinc-900/40"
+          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl glass-panel py-3.5 text-xs font-bold text-zinc-800 dark:text-white border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 active:scale-95 transition bg-zinc-100/50 dark:bg-zinc-900/40"
         >
           {/* Windows Download Icon */}
           <svg
-            className="w-4.5 h-4.5 fill-current text-zinc-300"
+            className="w-4.5 h-4.5 fill-current text-zinc-600 dark:text-zinc-300"
             viewBox="0 0 24 24"
           >
             <path d="M0 3.449L9.75 2.1v9.451H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.101zM11.25 1.9L24 0v11.55H11.25V1.9zM11.25 12.45H24v11.55l-12.75-1.9v-9.65z" />
@@ -82,12 +82,12 @@ export function LeftSidebar() {
           Download for Windows
         </a>
 
-        <div className="flex items-center justify-between text-[10px] font-mono text-zinc-500 px-1 pt-1">
+        <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 dark:text-zinc-500 px-1 pt-1">
           <span>v1.2.4 (Universal)</span>
           <span>•</span>
           <span>SQLite Local DB</span>
           <span>•</span>
-          <span className="text-zinc-400">Free to Try</span>
+          <span className="text-zinc-500 dark:text-zinc-400">Free to Try</span>
         </div>
       </div>
     </div>
