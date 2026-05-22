@@ -22,10 +22,8 @@ export async function POST(request: Request) {
 
     // Call Polar API to validate the license key
     const validationResponse = await polar.customerPortal.licenseKeys.validate({
-      body: {
-        key,
-        organizationId,
-      },
+      key,
+      organizationId,
     });
 
     return NextResponse.json(validationResponse);

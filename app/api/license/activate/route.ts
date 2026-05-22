@@ -22,12 +22,10 @@ export async function POST(request: Request) {
 
     // Call Polar API to activate the license key for a specific device/instance
     const activationResponse = await polar.customerPortal.licenseKeys.activate({
-      body: {
-        key,
-        organizationId,
-        label: label || "Default Device",
-        conditions: conditions, // Optional conditions like hardware ID or environment details
-      },
+      key,
+      organizationId,
+      label: label || "Default Device",
+      conditions: conditions,
     });
 
     return NextResponse.json(activationResponse);
