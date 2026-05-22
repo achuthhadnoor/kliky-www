@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LeftSidebar } from "./components/left-sidebar";
 import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
@@ -9,7 +9,7 @@ import { FeaturesBento } from "./components/features-bento";
 import { PricingSection } from "./components/pricing-section";
 import { ChangelogPreview } from "./components/changelog-preview";
 import { FAQSection } from "./components/faq-section";
-import { SwitchType } from "./components/audio";
+import { SwitchType, preloadAudio } from "./components/audio";
 
 import { ThemeSwitch } from "./components/theme-switch";
 import { MobileFloatingNav } from "./components/mobile-floating-nav";
@@ -17,6 +17,13 @@ export default function Home() {
   const [activeSwitch, setActiveSwitch] = useState<SwitchType>("zenith");
   const [volume, setVolume] = useState<number>(0.5);
   const [pitch, setPitch] = useState<number>(1.0);
+
+  useEffect(() => {
+    // Pre-fetch the high-fidelity sound sprites early so they're ready 
+    // before the user's first keystroke
+    preloadAudio();
+  }, []);
+
 
   return (
     <div className="relative min-h-screen w-full transition-colors duration-300 overflow-x-hidden flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16">

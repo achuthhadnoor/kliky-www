@@ -269,9 +269,20 @@ export function initAudio() {
     loadOfficialSamples(audioCtx);
   }
   if (audioCtx.state === "suspended") {
-    audioCtx.resume();
+    // Try to resume the context if it's suspended (needs user interaction to work)
+    audioCtx.resume().catch(() => {});
   }
   return audioCtx;
+}
+
+// Preload audio assets ahead of time (doesn't require context resumption)
+export function preloadAudio() {
+  if (typeof window === "undefined") return;
+  if (!audioCtx) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    loadOfficialSamples(audioCtx);
+  }
 }
 
 // Speed-based scaling state trackers
