@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { LeftSidebar } from "./components/left-sidebar";
 import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
+import { Toolbar } from "./components/toolbar";
 import { SwitchType } from "./components/audio";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
       {/* Main Container */}
       <main className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-center">
         
-        {/* 3-Column Split Grid */}
+        {/* 3-Column Responsive Split Grid */}
         <div className="grid grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           {/* LEFT SIDEBAR: Branding, Info, CTA */}
@@ -28,17 +29,31 @@ export default function Home() {
             <LeftSidebar />
           </div>
 
-          {/* CENTER PLAYGROUND: Core Interactive Sandbox */}
-          <div className="col-span-12 lg:col-span-6 border-y lg:border-y-0 lg:border-x border-zinc-200 dark:border-zinc-900/60 py-8 lg:py-0 lg:px-10 flex flex-col justify-between">
-            <CenterPlayground
-              activeSwitch={activeSwitch}
-              volume={volume}
-              pitch={pitch}
-            />
+          {/* CENTER PLAYGROUND: Core Interactive Sandbox with Mobile Toolbar */}
+          <div className="col-span-12 lg:col-span-6 border-y lg:border-y-0 lg:border-x border-zinc-200 dark:border-zinc-900/60 py-8 lg:py-0 lg:px-10 flex flex-col justify-between space-y-6">
+            {/* Horizontal Toolbar: Displayed ONLY in mobile/tablet viewports */}
+            <div className="block lg:hidden">
+              <Toolbar
+                activeSwitch={activeSwitch}
+                setActiveSwitch={setActiveSwitch}
+                volume={volume}
+                setVolume={setVolume}
+                pitch={pitch}
+                setPitch={setPitch}
+              />
+            </div>
+
+            <div className="flex-1">
+              <CenterPlayground
+                activeSwitch={activeSwitch}
+                volume={volume}
+                pitch={pitch}
+              />
+            </div>
           </div>
 
-          {/* RIGHT SIDEBAR: Sound Selector & Customizer Tiles */}
-          <div className="col-span-12 lg:col-span-3 flex flex-col justify-between">
+          {/* RIGHT SIDEBAR: Desktop view only */}
+          <div className="hidden lg:flex col-span-12 lg:col-span-3 flex flex-col justify-between">
             <RightSidebar
               activeSwitch={activeSwitch}
               setActiveSwitch={setActiveSwitch}
@@ -67,3 +82,5 @@ export default function Home() {
     </div>
   );
 }
+
+
