@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export function LeftSidebar() {
   return (
@@ -8,24 +9,14 @@ export function LeftSidebar() {
         <div className="flex items-center space-x-3">
           {/* Custom inline SVG mechanical switch logo */}
           <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-brand/20 to-brand/5 border border-brand/30 shadow-md">
-            <svg
-              className="w-7 h-7 text-brand animate-pulse"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {/* Keycap outline */}
-              <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" />
-              {/* Tactile Switch Stem */}
-              <path d="M12 8v4" />
-              <path d="M9 10h6" />
-              {/* Bottom spring action curve */}
-              <path d="M8 14c2.5 1 5.5 1 8 0" />
-            </svg>
-            <div className="absolute inset-0 rounded-xl bg-brand/10 blur-sm pointer-events-none" />
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={48}
+              height={48}
+              className="rounded-xl object-contain p-1"
+              priority
+            />
           </div>
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight text-white font-sans flex items-center">
@@ -42,7 +33,7 @@ export function LeftSidebar() {
         </h2>
 
         <p className="text-sm leading-relaxed text-zinc-400 font-sans">
-          Kliky is a lightweight background application that plays highly satisfying mechanical key sounds instantly as you type on your physical laptop keyboard. 
+          Kliky is a lightweight background application that plays highly satisfying mechanical key sounds instantly as you type on your physical laptop keyboard.
         </p>
 
         {/* Benefits bullets */}
