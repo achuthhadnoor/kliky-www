@@ -4,32 +4,32 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Premium Amethyst Light Mode (Crisp lilac-tinted white) */
-  --background: #faf9fc;
-  --foreground: #09090b;
-  --brand: #7c3aed;
-  /* Kliky mechanical rich violet accent */
-  --brand-glow: rgba(124, 58, 237, 0.12);
+  /* Crimson Light Mode (Crisp red-tinted white) */
+  --background: #fcfaf9;
+  --foreground: #0b0909;
+  --brand: #ef4444;
+  /* Kliky mechanical rich red accent */
+  --brand-glow: rgba(239, 68, 68, 0.12);
 
   --card-bg: rgba(255, 255, 255, 0.75);
-  --card-border: rgba(124, 58, 237, 0.15);
-  --scrollbar-thumb: #e4e2eb;
+  --card-border: rgba(239, 68, 68, 0.15);
+  --scrollbar-thumb: #ebe4e4;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-.dark {
-  /* Default Dark Mode: Premium Amethyst Obsidian (Extremely deep purple space-black) */
-  --background: #08060d;
-  --foreground: #f6f5fa;
-  --brand: #a855f7;
-  /* Kliky mechanical electric purple accent */
-  --brand-glow: rgba(168, 85, 247, 0.15);
+:root.dark {
+  /* Crimson Dark Mode: Deep mahogany space-black */
+  --background: #0d0606;
+  --foreground: #faf5f5;
+  --brand: #f87171;
+  /* Kliky mechanical electric red accent */
+  --brand-glow: rgba(248, 113, 113, 0.15);
 
-  --card-bg: rgba(20, 16, 32, 0.6);
-  --card-border: rgba(168, 85, 247, 0.12);
-  --scrollbar-thumb: #221c38;
+  --card-bg: rgba(32, 16, 16, 0.6);
+  --card-border: rgba(248, 113, 113, 0.12);
+  --scrollbar-thumb: #381c1c;
 }
 
 @theme inline {

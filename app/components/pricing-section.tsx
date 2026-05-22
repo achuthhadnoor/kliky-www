@@ -41,7 +41,7 @@ export function PricingSection() {
 
   const handleSubmitWaitlist = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Simple Email Regex Validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email.trim()) {
@@ -65,7 +65,7 @@ export function PricingSection() {
 
   return (
     <section id="pricing" className="relative w-full mt-24 pt-16 border-t border-zinc-200 dark:border-zinc-900/60 flex flex-col items-center">
-      
+
       {/* Decorative ambient lighting halo (GPU accelerated) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
 
@@ -84,35 +84,11 @@ export function PricingSection() {
 
       {/* Speculative Interactive Toggle */}
       <div className="relative z-10 mb-14 flex flex-col items-center">
-        <div className="flex items-center bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/60 dark:border-zinc-800/60 p-1 rounded-full shadow-inner relative w-64">
-          {/* Sliding background indicator pill */}
-          <div 
-            className={`absolute top-1 bottom-1 rounded-full bg-white dark:bg-zinc-800 border border-zinc-200/40 dark:border-zinc-700/40 shadow-sm transition-all duration-300 ease-out-back ${
-              billingCycle === "lifetime" ? "left-1 right-1/2" : "left-1/2 right-1"
-            }`}
-          />
-          
-          <button
-            onClick={() => setBillingCycle("lifetime")}
-            className={`flex-1 text-center py-2 text-xs font-bold font-mono transition-colors relative z-10 select-none cursor-pointer focus:outline-none ${
-              billingCycle === "lifetime" ? "text-brand" : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
-            }`}
-          >
-            Lifetime Pass
-          </button>
-          <button
-            onClick={() => setBillingCycle("monthly")}
-            className={`flex-1 text-center py-2 text-xs font-bold font-mono transition-colors relative z-10 select-none cursor-pointer focus:outline-none ${
-              billingCycle === "monthly" ? "text-brand" : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
-            }`}
-          >
-            Pro Monthly
-          </button>
-        </div>
+
 
         {/* Dynamic Saving tag */}
         {billingCycle === "lifetime" && (
-          <span className="absolute -bottom-7 text-[10px] font-bold font-mono text-emerald-600 dark:text-emerald-500 bg-emerald-100/50 dark:bg-emerald-950/30 border border-emerald-200/40 dark:border-emerald-800/40 px-2 py-0.5 rounded-full animate-bounce">
+          <span className=" -bottom-7 text-[10px] font-bold font-mono text-emerald-600 dark:text-emerald-500 bg-emerald-100/50 dark:bg-emerald-950/30 border border-emerald-200/40 dark:border-emerald-800/40 px-2 py-0.5 rounded-full animate-bounce">
             Save over 60% compared to monthly
           </span>
         )}
@@ -120,7 +96,7 @@ export function PricingSection() {
 
       {/* Two-Column Center Grid */}
       <div className="relative z-10 w-full max-w-4xl px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        
+
         {/* CARD 1: Core (Free Forever) */}
         <div className="rounded-3xl glass-panel border border-zinc-200/50 dark:border-zinc-800/40 p-8 flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700/80 transition-all duration-300 hover:shadow-lg hover:shadow-zinc-500/5 relative overflow-hidden bg-white/20 dark:bg-zinc-950/20">
           <div>
@@ -165,7 +141,7 @@ export function PricingSection() {
             </ul>
           </div>
 
-          <a 
+          <a
             href="https://github.com/achuthhadnoor/kliky"
             target="_blank"
             rel="noopener noreferrer"
@@ -177,8 +153,7 @@ export function PricingSection() {
 
         {/* CARD 2: Creator Pro (speculative roadmap coming soon) */}
         <div className="rounded-3xl glass-panel border-2 border-brand/30 dark:border-brand/40 p-8 flex flex-col justify-between hover:border-brand transition-all duration-300 shadow-xl shadow-brand/5 relative overflow-hidden bg-brand/[0.03] dark:bg-brand/[0.01]">
-          {/* Coming Soon Glowing Tag */}
-          <div className="absolute top-0 right-0 transform translate-x-12 translate-y-4 rotate-45 bg-gradient-to-r from-brand to-indigo-600 text-white text-[9px] font-bold font-mono tracking-widest uppercase py-1 px-12 shadow-sm z-20 select-none">
+          <div className="absolute top-0 right-0 transform translate-x-12 translate-y-4 rotate-45 bg-brand text-white text-[9px] font-bold font-mono tracking-widest uppercase py-1 px-12 shadow-sm z-20 select-none">
             coming soon
           </div>
 
@@ -228,24 +203,26 @@ export function PricingSection() {
             </ul>
           </div>
 
-          <button
-            onClick={handleOpenModal}
-            className="w-full text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-brand to-indigo-600 hover:from-brand-hover hover:to-indigo-700 text-white text-xs font-extrabold tracking-wider transition-all shadow-md hover:shadow-brand/25 active:scale-[0.98] cursor-pointer select-none font-sans"
-          >
-            Join Waitlist & Pro Beta
-          </button>
+          <div className="mt-8">
+            <button
+              onClick={handleOpenModal}
+              className="w-full text-center py-3.5 px-4 rounded-xl bg-brand text-white text-xs font-extrabold tracking-wider transition-all shadow-md hover:shadow-brand/25 active:scale-[0.98] cursor-pointer select-none font-sans"
+            >
+              Get Creator Pro Beta
+            </button>
+          </div>
         </div>
 
       </div>
 
       {/* TACTILE EMAIL WAITLIST MODAL OVERLAY */}
       {isModalOpen && (
-        <div 
+        <div
           onClick={handleCloseModal}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-md transition-all duration-300"
         >
           {/* Modal Container Card */}
-          <div 
+          <div
             onClick={(e) => e.stopPropagation()}
             className="glass-panel max-w-md w-full rounded-3xl p-8 border border-zinc-200 dark:border-zinc-800/60 bg-white dark:bg-zinc-950 shadow-2xl relative overflow-hidden animate-in fade-in zoom-in-95 duration-200"
           >
@@ -292,11 +269,10 @@ export function PricingSection() {
                       value={email}
                       onChange={handleEmailChange}
                       disabled={isSubmitting}
-                      className={`w-full px-4 py-3 rounded-xl border font-sans text-xs bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand/35 transition-all ${
-                        validationError 
-                          ? "border-red-500/50 dark:border-red-500/40" 
-                          : "border-zinc-200/60 dark:border-zinc-800/60 focus:border-brand"
-                      }`}
+                      className={`w-full px-4 py-3 rounded-xl border font-sans text-xs bg-zinc-50 dark:bg-zinc-900/60 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand/35 transition-all ${validationError
+                        ? "border-red-500/50 dark:border-red-500/40"
+                        : "border-zinc-200/60 dark:border-zinc-800/60 focus:border-brand"
+                        }`}
                     />
                     {validationError && (
                       <span className="text-[10px] font-medium font-sans text-red-500 mt-1 flex items-center">
@@ -311,7 +287,7 @@ export function PricingSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full text-center py-3 px-4 mt-2 rounded-xl bg-gradient-to-r from-brand to-indigo-600 hover:from-brand-hover hover:to-indigo-700 text-white text-xs font-bold tracking-wide transition-all shadow-md hover:shadow-brand/20 flex items-center justify-center cursor-pointer select-none font-sans"
+                    className="w-full text-center py-3 px-4 mt-2 rounded-xl bg-brand text-white text-xs font-bold tracking-wide transition-all shadow-md hover:shadow-brand/20 flex items-center justify-center cursor-pointer select-none font-sans"
                   >
                     {isSubmitting ? (
                       <svg className="animate-spin h-4.5 w-4.5 text-white" fill="none" viewBox="0 0 24 24">

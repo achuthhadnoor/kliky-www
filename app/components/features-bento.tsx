@@ -513,7 +513,8 @@ export function FeaturesBento() {
           
           <div className="mt-8 md:mt-0 z-10 w-full md:w-1/2 flex justify-center">
             <div className="w-full max-w-sm rounded-xl bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200/40 dark:border-zinc-800/60 p-5 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-indigo-400" />
+              {/* Animated Progress Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-brand" />
               <div className="flex justify-between items-center mb-4">
                 <span className="text-[10px] font-mono text-zinc-500 uppercase">Speed</span>
                 <span className="text-[10px] font-mono text-zinc-500 uppercase">Accuracy</span>

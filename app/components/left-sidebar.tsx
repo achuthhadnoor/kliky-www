@@ -13,7 +13,7 @@ export function LeftSidebar() {
       <div className="space-y-6">
         <div className="flex items-center space-x-3">
           {/* Custom inline SVG mechanical switch logo */}
-          <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-brand/20 to-brand/5 border border-brand/30 shadow-md">
+          <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-brand/20 border border-brand/30 shadow-md">
             <Image
               src="/logo.png"
               alt="Logo"
@@ -62,7 +62,7 @@ export function LeftSidebar() {
           href={macUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand to-[#d946ef] py-3.5 text-xs font-bold text-white shadow-xl hover:shadow-brand/20 active:scale-95 transition cursor-pointer select-none"
+          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl bg-brand py-3.5 text-xs font-bold text-white shadow-xl hover:shadow-brand/20 active:scale-95 transition cursor-pointer select-none"
         >
           {/* Apple Download Icon */}
           <svg
