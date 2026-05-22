@@ -181,7 +181,7 @@ export function PricingSection() {
             </div>
 
             <p className="text-xs text-zinc-600 dark:text-zinc-400 font-sans leading-relaxed mb-6">
-              Tailored for streamers, mechanical enthusiasts, and content creators looking to fully spatialise typing soundscapes.
+              Tailored for streamers and creators. Purchasing Creator Pro provides a secure <strong>License Key</strong> (powered by Polar.sh) to unlock premium spatial audio features directly inside the Kliky desktop app.
             </p>
 
             <ul className="space-y-3.5 mb-8">
