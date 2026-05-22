@@ -45,7 +45,7 @@ export function LeftSidebar() {
             <span className="text-brand mr-2">🔇</span> Perfect for Zoom calls (auto-dampens when speaking).
           </li>
           <li className="flex items-start">
-            <span className="text-brand mr-2">🔋</span> Engineered in Rust & lightweight native APIs to protect battery life.
+            <span className="text-brand mr-2">🔋</span> Engineered in native APIs to protect battery life.
           </li>
         </ul>
       </div>
@@ -84,8 +84,6 @@ export function LeftSidebar() {
 
         <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 dark:text-zinc-500 px-1 pt-1">
           <span>v1.2.4 (Universal)</span>
-          <span>•</span>
-          <span>SQLite Local DB</span>
           <span>•</span>
           <span className="text-zinc-500 dark:text-zinc-400">Free to Try</span>
         </div>

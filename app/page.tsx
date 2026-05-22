@@ -5,6 +5,7 @@ import { LeftSidebar } from "./components/left-sidebar";
 import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
 import { Toolbar } from "./components/toolbar";
+import { FeaturesBento } from "./components/features-bento";
 import { SwitchType } from "./components/audio";
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
   const [pitch, setPitch] = useState<number>(1.0);
 
   return (
-    <div className="relative min-h-screen w-full transition-colors duration-300 overflow-hidden flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16">
+    <div className="relative min-h-screen w-full transition-colors duration-300 overflow-x-hidden flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16">
       {/* Sleek, premium glowing background radial light leaks (GPU accelerated) */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-brand/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-500/5 blur-[140px] pointer-events-none" />
@@ -21,7 +22,7 @@ export default function Home() {
       {/* Main Container */}
       <main className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-center">
         
-        {/* 3-Column Responsive Split Grid */}
+        {/* 3-Column Responsive Split Grid (Hero Section) */}
         <div className="grid grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           {/* LEFT SIDEBAR: Branding, Info, CTA */}
@@ -66,10 +67,13 @@ export default function Home() {
 
         </div>
 
+        {/* Bento Grid Feature Section */}
+        <FeaturesBento />
+
       </main>
 
       {/* Decorative Brand Tagline at bottom footer */}
-      <footer className="relative z-10 w-full max-w-7xl mx-auto mt-12 pt-6 border-t border-zinc-200 dark:border-zinc-900/40 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-600 gap-4">
+      <footer className="relative z-10 w-full max-w-7xl mx-auto mt-24 pt-6 border-t border-zinc-200 dark:border-zinc-900/40 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-600 gap-4">
         <p>© 2026 Kliky App. Built with high-fidelity procedural Web Audio.</p>
         <div className="flex gap-4">
           <a href="#" className="hover:text-brand transition">Privacy Policy</a>
@@ -82,5 +86,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
