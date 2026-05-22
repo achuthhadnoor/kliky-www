@@ -489,6 +489,44 @@ export function FeaturesBento() {
           </div>
         </div>
 
+        {/* CARD 7: Native Typing Sandbox (Col-span 3) */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 rounded-2xl glass-panel p-6 md:p-10 flex flex-col md:flex-row items-center justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300">
+          <div className="z-10 md:w-1/2 md:pr-8">
+            <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand animate-ping" />
+              Practice & Track
+            </span>
+            <h3 className="text-xl md:text-2xl font-bold text-zinc-800 dark:text-white font-sans mt-3">Native Typing Sandbox</h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-3 leading-relaxed">
+              Test your mechanical switches in real-time with our built-in typing playground. Features WPM tracking, accuracy metrics, and a beautiful collection of nature quotes right from your system tray.
+            </p>
+            <div className="mt-6 flex items-center gap-4 text-xs font-mono font-bold">
+              <span className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/80 text-brand">Live WPM Tracking</span>
+              <span className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/80 text-zinc-600 dark:text-zinc-300">Curated Quotes</span>
+            </div>
+          </div>
+          
+          <div className="mt-8 md:mt-0 z-10 w-full md:w-1/2 flex justify-center">
+            <div className="w-full max-w-sm rounded-xl bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200/40 dark:border-zinc-800/60 p-5 shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-indigo-400" />
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase">Speed</span>
+                <span className="text-[10px] font-mono text-zinc-500 uppercase">Accuracy</span>
+              </div>
+              <div className="flex justify-between items-end mb-6">
+                <span className="text-3xl font-black text-brand font-sans leading-none">124<span className="text-sm font-normal text-zinc-500 ml-1">WPM</span></span>
+                <span className="text-2xl font-bold text-zinc-700 dark:text-zinc-300 leading-none">98%</span>
+              </div>
+              <div className="font-mono text-xs text-zinc-400 dark:text-zinc-500 leading-relaxed whitespace-pre-wrap">
+                <span className="text-zinc-800 dark:text-zinc-200">between every two</span><span className="relative inline-block"><span className="absolute left-0 top-0 bottom-0 w-[2px] bg-brand animate-pulse shadow-[0_0_8px_var(--color-brand)]" /></span> pines is a doorway to a new world
+              </div>
+            </div>
+          </div>
+
+          {/* Ambient background glow for card 7 */}
+          <div className="absolute right-0 bottom-0 w-[400px] h-[400px] rounded-full bg-brand/5 blur-[100px] pointer-events-none group-hover:bg-brand/10 transition-all duration-500" />
+        </div>
+
       </div>
     </section>
   );

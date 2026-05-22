@@ -58,7 +58,9 @@ export function useGitHubReleases(): UseGitHubReleasesResult {
       try {
         const response = await fetch("https://api.github.com/repos/achuthhadnoor/kliky/releases");
         if (!response.ok) {
-          throw new Error("Failed to fetch releases from GitHub API");
+          console.warn(`GitHub API issue (Status: ${response.status}). Using fallback download links.`);
+          setLoading(false);
+          return;
         }
         
         const data = await response.json() as GitHubRelease[];
