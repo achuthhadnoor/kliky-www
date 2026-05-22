@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
+/* Force Tailwind v4's dark variant to use the .dark class injected by next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  /* Premium Amethyst Light Mode (Crisp lilac-tinted white) */
+  --background: #faf9fc;
+  --foreground: #09090b;
+  --brand: #7c3aed;
+  /* Kliky mechanical rich violet accent */
+  --brand-glow: rgba(124, 58, 237, 0.12);
+
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(124, 58, 237, 0.15);
+  --scrollbar-thumb: #e4e2eb;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
   /* Default Dark Mode: Premium Amethyst Obsidian (Extremely deep purple space-black) */
   --background: #08060d;
   --foreground: #f6f5fa;
@@ -11,24 +30,6 @@
   --card-bg: rgba(20, 16, 32, 0.6);
   --card-border: rgba(168, 85, 247, 0.12);
   --scrollbar-thumb: #221c38;
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Premium Amethyst Light Mode (Crisp lilac-tinted white) */
-    --background: #faf9fc;
-    --foreground: #09090b;
-    --brand: #7c3aed;
-    /* Kliky mechanical rich violet accent */
-    --brand-glow: rgba(124, 58, 237, 0.12);
-
-    --card-bg: rgba(255, 255, 255, 0.75);
-    --card-border: rgba(124, 58, 237, 0.15);
-    --scrollbar-thumb: #e4e2eb;
-  }
 }
 
 @theme inline {
@@ -62,10 +63,8 @@ body {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  .glass-panel {
-    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
-  }
+.dark .glass-panel {
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Interactive elements */
