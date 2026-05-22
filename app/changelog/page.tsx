@@ -130,7 +130,7 @@ export default function ChangelogPage() {
 
       {/* Dynamic Glowing background ambient lighting halos */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-brand/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-500/5 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] rounded-full bg-red-500/5 blur-[140px] pointer-events-none" />
 
       {/* Main Container Content */}
       <main className="relative z-10 w-full max-w-4xl mx-auto flex-1 flex flex-col justify-start">
@@ -333,7 +333,7 @@ export default function ChangelogPage() {
                     <div className="flex flex-col gap-5 mt-2">
                       {entry.bullets.map((bullet, idx) => (
                         <div key={idx} className="flex items-start">
-                          <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border shrink-0 mr-4 mt-0.5 select-none font-mono ${bullet.type === "features" ? "bg-brand/10 border-brand/20 text-brand" : bullet.type === "acoustics" ? "bg-indigo-100/50 dark:bg-indigo-950/30 border-indigo-200/30 dark:border-indigo-800/30 text-indigo-500" : "bg-emerald-100/50 dark:bg-emerald-950/30 border-emerald-200/30 dark:border-emerald-800/30 text-emerald-500"
+                          <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border shrink-0 mr-4 mt-0.5 select-none font-mono ${bullet.type === "features" ? "bg-brand/10 border-brand/20 text-brand" : bullet.type === "acoustics" ? "bg-red-100/50 dark:bg-red-950/30 border-red-200/30 dark:border-red-800/30 text-red-500" : "bg-emerald-100/50 dark:bg-emerald-950/30 border-emerald-200/30 dark:border-emerald-800/30 text-emerald-500"
                             }`}>{bullet.type}</span>
                           <div>
                             <h4 className="text-xs font-bold text-zinc-900 dark:text-zinc-100 font-sans tracking-wide">{bullet.title}</h4>

@@ -67,7 +67,7 @@ export function PricingSection() {
     <section id="pricing" className="relative w-full mt-24 pt-16 border-t border-zinc-200 dark:border-zinc-900/60 flex flex-col items-center">
 
       {/* Decorative ambient lighting halo (GPU accelerated) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-red-500/5 blur-[120px] pointer-events-none" />
 
       {/* Pricing Header */}
       <div className="text-center max-w-2xl mx-auto mb-10 px-4 relative z-10">
@@ -227,7 +227,7 @@ export function PricingSection() {
           >
             {/* Modal Ambient Lights */}
             <div className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-brand/10 blur-2xl pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-red-500/5 blur-2xl pointer-events-none" />
 
             {/* Close Cross Trigger */}
             <button

@@ -29,7 +29,7 @@ export default function Home() {
     <div className="relative min-h-screen w-full transition-colors duration-300 overflow-x-hidden flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16">
       {/* Sleek, premium glowing background radial light leaks (GPU accelerated) */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-brand/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-500/5 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] rounded-full bg-red-500/5 blur-[140px] pointer-events-none" />
 
       {/* Main Container */}
       <main className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-center">

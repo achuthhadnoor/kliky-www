@@ -75,7 +75,7 @@ function parseInline(text: string) {
   parsed = parsed.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand hover:text-brand-hover hover:underline transition-colors">$1</a>');
 
   // GitHub User mentions: @username
-  parsed = parsed.replace(/(^|\s)@([a-zA-Z0-9_-]+)(\s|$)/g, '$1<a href="https://github.com/$2" target="_blank" rel="noopener noreferrer" class="text-indigo-500 dark:text-indigo-400 font-medium hover:underline transition-colors">@$2</a>$3');
+  parsed = parsed.replace(/(^|\s)@([a-zA-Z0-9_-]+)(\s|$)/g, '$1<a href="https://github.com/$2" target="_blank" rel="noopener noreferrer" class="text-red-500 dark:text-red-400 font-medium hover:underline transition-colors">@$2</a>$3');
 
   // GitHub PR/Issue references: #42
   parsed = parsed.replace(/(^|\s)#(\d+)(\s|$)/g, '$1<a href="https://github.com/achuthhadnoor/kliky/pull/$2" target="_blank" rel="noopener noreferrer" class="text-brand font-medium hover:underline transition-colors">#$2</a>$3');
