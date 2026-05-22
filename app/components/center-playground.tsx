@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { playSwitchSound, SwitchType } from "./audio";
 
 interface CenterPlaygroundProps {
@@ -8,6 +8,8 @@ interface CenterPlaygroundProps {
   volume: number;
   pitch: number;
 }
+
+const TARGET_TEXT = "the quick brown fox jumps over the lazy dog. experience highly satisfying mechanical keyboard soundscapes right here in your browser. actuate your laptop keys and hear the dynamic clack of a premium switch.";
 
 export function CenterPlayground({
   activeSwitch,
@@ -18,10 +20,17 @@ export function CenterPlayground({
   const [isTyping, setIsTyping] = useState(false);
   const [wpm, setWpm] = useState(0);
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   
   // WPM Tracking variables
   const startTimeRef = useRef<number | null>(null);
-  const wordCountRef = useRef<number>(0);
+
+  // Focus the input immediately on mount
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, []);
 
   // Trigger sound and animations on key press
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -45,25 +54,33 @@ export function CenterPlayground({
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;
+    
+    // Prevent typing beyond the target text length
+    if (val.length > TARGET_TEXT.length) return;
+    
     setText(val);
 
-    // Calculate WPM dynamically
+    // Calculate WPM dynamically using standard typing test rules
     if (val.length === 0) {
       startTimeRef.current = null;
       setWpm(0);
       return;
     }
 
-    const words = val.trim().split(/\s+/).filter(Boolean);
-    wordCountRef.current = words.length;
+    let correctStrokes = 0;
+    for (let i = 0; i < val.length; i++) {
+      if (val[i] === TARGET_TEXT[i]) {
+        correctStrokes++;
+      }
+    }
 
     if (startTimeRef.current) {
       const minutesElapsed = (Date.now() - startTimeRef.current) / 60000;
       if (minutesElapsed > 0.01) {
-        const calculatedWpm = Math.round(wordCountRef.current / minutesElapsed);
+        const calculatedWpm = Math.round((correctStrokes / 5) / minutesElapsed);
         setWpm(calculatedWpm > 250 ? 250 : calculatedWpm); // cap at 250 WPM
       } else {
-        setWpm(Math.round(wordCountRef.current * 20)); // early estimate
+        setWpm(Math.round((correctStrokes / 5) * 60)); // early estimate
       }
     }
   };
@@ -73,7 +90,9 @@ export function CenterPlayground({
     setText("");
     setWpm(0);
     startTimeRef.current = null;
-    wordCountRef.current = 0;
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
   };
 
   const activeSwitchLabel = {
@@ -108,24 +127,70 @@ export function CenterPlayground({
         </div>
       </div>
 
-      {/* Glassmorphic Text Input Box */}
+      {/* Glassmorphic Typing Test Area (Monkeytype style) */}
       <div className="flex-1 relative group">
-        <textarea
-          value={text}
-          onChange={handleTextChange}
-          onKeyDown={handleKeyDown}
-          placeholder="Start typing right here to experience Kliky... Actuate your laptop keys and hear the dynamic clack!"
-          className="w-full h-full min-h-[300px] lg:min-h-0 resize-none rounded-2xl glass-panel p-6 outline-none text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 font-mono text-base leading-relaxed tracking-wide transition duration-300 focus:border-brand/40 focus:ring-1 focus:ring-brand/30 selection:bg-brand/20"
-        />
+        <div 
+          className="w-full h-full min-h-[300px] lg:min-h-0 relative rounded-2xl glass-panel p-6 lg:p-10 overflow-hidden flex flex-col transition duration-300 focus-within:border-brand/40 focus-within:ring-1 focus-within:ring-brand/30 cursor-text group"
+          onClick={() => textareaRef.current?.focus()}
+        >
+          {/* Hidden text area to capture mobile keyboard correctly and desktop events robustly */}
+          <textarea
+            ref={textareaRef}
+            value={text}
+            onChange={handleTextChange}
+            onKeyDown={handleKeyDown}
+            className="absolute inset-0 opacity-0 resize-none z-10 w-full h-full cursor-text"
+            spellCheck={false}
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+          />
+          
+          <div className="flex-1 relative z-0 pointer-events-none font-mono text-xl lg:text-2xl leading-relaxed tracking-wide text-zinc-400/50 dark:text-zinc-600/50 select-none break-words whitespace-pre-wrap">
+            {TARGET_TEXT.split('').map((char, index) => {
+              let colorClass = "";
+              if (index < text.length) {
+                colorClass = text[index] === char 
+                  ? "text-zinc-800 dark:text-zinc-200" 
+                  : "text-red-500 bg-red-500/10 rounded-sm";
+              }
+              
+              const isCurrent = index === text.length;
+
+              return (
+                <span key={index} className="relative inline-block">
+                  {isCurrent && (
+                    <span className="absolute left-0 top-0.5 bottom-0.5 w-[2px] bg-brand animate-pulse shadow-[0_0_8px_var(--color-brand)]" />
+                  )}
+                  <span className={`${colorClass} transition-colors duration-75`}>{char}</span>
+                </span>
+              );
+            })}
+            
+            {/* Handle cursor at the very end of the text */}
+            {text.length === TARGET_TEXT.length && (
+              <span className="relative inline-block">
+                <span className="absolute left-0 top-0.5 bottom-0.5 w-[2px] bg-brand animate-pulse shadow-[0_0_8px_var(--color-brand)]" />
+              </span>
+            )}
+            
+            {/* Overlay hint when unfocused, shown based on focus-within on the container */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-focus-within:opacity-0 transition-opacity duration-300 pointer-events-none">
+              <span className="px-4 py-2 rounded-full glass-panel text-sm text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
+                Click here to focus
+              </span>
+            </div>
+          </div>
+        </div>
 
         {/* Small floating action indicators inside textarea */}
-        <div className="absolute right-4 bottom-4 flex items-center space-x-2">
+        <div className="absolute right-4 bottom-4 flex items-center space-x-2 z-20">
           {text.length > 0 && (
             <button
               onClick={handleReset}
               className="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800/80 text-[11px] font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition cursor-pointer"
             >
-              Clear Sandbox
+              Restart Test
             </button>
           )}
         </div>
@@ -157,3 +222,4 @@ export function CenterPlayground({
     </div>
   );
 }
+
