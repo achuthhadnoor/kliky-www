@@ -78,7 +78,7 @@ export function PricingSection() {
           Simple, Transparent Plans
         </h2>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 font-sans mt-3 leading-relaxed">
-          Kliky is free to download and use offline forever. Help shape our roadmap as we construct the ultimate next-generation spatial acoustic suites.
+          Kliky comes with a 7-day free trial. Download and try it out, and purchase a lifetime license to keep the clicks going forever.
         </p>
       </div>
 
@@ -109,18 +109,18 @@ export function PricingSection() {
                   Offline Satisfying Acoustics
                 </p>
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-mono px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-950/60 border border-zinc-200/50 dark:border-zinc-800/60">
-                Free
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-500 font-mono px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-200/50 dark:border-emerald-800/60">
+                7-Day Free Trial
               </span>
             </div>
 
             <div className="flex items-baseline mb-6 font-sans">
-              <span className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">$0</span>
-              <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-2 font-mono">Free Forever</span>
+              <span className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">$15</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-2 font-mono">One-Time Payment</span>
             </div>
 
             <p className="text-xs text-zinc-600 dark:text-zinc-400 font-sans leading-relaxed mb-6">
-              Perfect for general writers, software developers, and keyboard collectors wanting satisfying click-clacks.
+              Start with a 7-day free trial. Perfect for general writers, software developers, and keyboard collectors wanting satisfying click-clacks.
             </p>
 
             <ul className="space-y-3.5 mb-8">
@@ -146,7 +146,7 @@ export function PricingSection() {
             rel="noopener noreferrer"
             className="w-full text-center py-3 px-4 rounded-xl border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 text-xs font-bold tracking-wide transition-all shadow-sm cursor-pointer select-none font-sans"
           >
-            Download Free Client
+            Start Free Trial
           </a>
         </div>
 

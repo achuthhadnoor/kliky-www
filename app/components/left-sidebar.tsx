@@ -91,7 +91,7 @@ export function LeftSidebar() {
         <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 dark:text-zinc-500 px-1 pt-1 select-none">
           <span>{latestVersion} (Universal)</span>
           <span>•</span>
-          <span className="text-zinc-500 dark:text-zinc-400">Free to Try</span>
+          <span className="text-zinc-500 dark:text-zinc-400">7-Day Free Trial</span>
         </div>
       </div>
     </div>
