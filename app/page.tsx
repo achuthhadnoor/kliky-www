@@ -6,6 +6,7 @@ import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
 import { Toolbar } from "./components/toolbar";
 import { FeaturesBento } from "./components/features-bento";
+import { FAQSection } from "./components/faq-section";
 import { SwitchType } from "./components/audio";
 
 export default function Home() {
@@ -70,7 +71,11 @@ export default function Home() {
         {/* Bento Grid Feature Section */}
         <FeaturesBento />
 
+        {/* Accordion FAQ Section */}
+        <FAQSection />
+
       </main>
+
 
       {/* Decorative Brand Tagline at bottom footer */}
       <footer className="relative z-10 w-full max-w-7xl mx-auto mt-24 pt-6 border-t border-zinc-200 dark:border-zinc-900/40 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-600 gap-4">
