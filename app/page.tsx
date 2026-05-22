@@ -6,6 +6,7 @@ import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
 import { Toolbar } from "./components/toolbar";
 import { FeaturesBento } from "./components/features-bento";
+import { PricingSection } from "./components/pricing-section";
 import { FAQSection } from "./components/faq-section";
 import { SwitchType } from "./components/audio";
 
@@ -70,6 +71,9 @@ export default function Home() {
 
         {/* Bento Grid Feature Section */}
         <FeaturesBento />
+
+        {/* Pricing & Future Roadmap Section */}
+        <PricingSection />
 
         {/* Accordion FAQ Section */}
         <FAQSection />
