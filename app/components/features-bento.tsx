@@ -7,8 +7,8 @@ export function FeaturesBento() {
   // Card 1 state: Latency Tester
   const [latencyText, setLatencyText] = useState<string>("Click to test");
   const [isTestingLatency, setIsTestingLatency] = useState(false);
-  const [latencyWaves] = useState<number[]>(() => 
-    Array.from({ length: 24 }, () => Math.random() * 20 + 5)
+  const [latencyWaves, setLatencyWaves] = useState<number[]>(
+    Array(24).fill(10)
   );
 
   // Card 2 state: OS Hotkeys Selector
@@ -17,9 +17,14 @@ export function FeaturesBento() {
 
   // Card 4 state: Smart Mic Dampening
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [micAmplitude, setMicAmplitude] = useState<number[]>(() => 
-    Array.from({ length: 30 }, () => Math.random() * 8 + 2)
+  const [micAmplitude, setMicAmplitude] = useState<number[]>(
+    Array(30).fill(2)
   );
+
+  useEffect(() => {
+    // Generate random waves only on the client
+    setLatencyWaves(Array.from({ length: 24 }, () => Math.random() * 20 + 5));
+  }, []);
 
   // Card 5 state: Switch Blueprint Type
   const [bluePrintSwitch, setBlueprintSwitch] = useState<SwitchType>("zenith");
