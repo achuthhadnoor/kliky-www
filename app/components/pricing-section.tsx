@@ -141,7 +141,7 @@ export function PricingSection() {
           </div>
 
           <a
-            href="https://github.com/achuthhadnoor/kliky"
+            href="https://github.com/achuthhadnoor/kliky-www/releases"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full text-center py-3 px-4 rounded-xl border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 text-xs font-bold tracking-wide transition-all shadow-sm cursor-pointer select-none font-sans"
