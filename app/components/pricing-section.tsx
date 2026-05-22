@@ -115,7 +115,7 @@ export function PricingSection() {
             </div>
 
             <div className="flex items-baseline mb-6 font-sans">
-              <span className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">$15</span>
+              <span className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">$3.99</span>
               <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-2 font-mono">One-Time Payment</span>
             </div>
 
