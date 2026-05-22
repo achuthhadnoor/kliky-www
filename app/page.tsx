@@ -12,7 +12,7 @@ import { FAQSection } from "./components/faq-section";
 import { SwitchType } from "./components/audio";
 
 import { ThemeSwitch } from "./components/theme-switch";
-
+import { MobileFloatingNav } from "./components/mobile-floating-nav";
 export default function Home() {
   const [activeSwitch, setActiveSwitch] = useState<SwitchType>("zenith");
   const [volume, setVolume] = useState<number>(0.5);
@@ -26,10 +26,11 @@ export default function Home() {
 
       {/* Main Container */}
       <main className="relative z-10 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-center">
-        
+        <MobileFloatingNav />
+
         {/* 3-Column Responsive Split Grid (Hero Section) */}
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          
+        <div className=" py-12 grid grid-cols-12 gap-8 lg:gap-12 items-stretch">
+
           {/* LEFT SIDEBAR: Branding, Info, CTA */}
           <div className="col-span-12 lg:col-span-3 flex flex-col justify-between">
             <LeftSidebar />
