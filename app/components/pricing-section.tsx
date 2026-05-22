@@ -127,7 +127,6 @@ export function PricingSection() {
               {[
                 "5 Premium sound packs pre-loaded",
                 "Load custom packs (drag-and-drop WAV)",
-                "Smart Mic dampener for Zoom calls",
                 "Universal macOS and Windows clients",
                 "100% private and fully open-source"
               ].map((feature, i) => (

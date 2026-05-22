@@ -47,9 +47,6 @@ export function LeftSidebar() {
             <span className="text-brand mr-2">⚡</span> Works globally across all apps and browsers.
           </li>
           <li className="flex items-start">
-            <span className="text-brand mr-2">🔇</span> Perfect for Zoom calls (auto-dampens when speaking).
-          </li>
-          <li className="flex items-start">
             <span className="text-brand mr-2">🔋</span> Engineered in native APIs to protect battery life.
           </li>
         </ul>

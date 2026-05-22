@@ -65,7 +65,6 @@ export default function ChangelogPage() {
       tagline: "Smart Mic & Custom Soundpacks",
       bullets: [
         { type: "acoustics", title: "Custom Sound Folder Support", text: "Enabled dragging and dropping custom WAV/MP3 packs directly into local settings directories." },
-        { type: "features", title: "Smart Mic Call Dampener", text: "Built background mic listener that dampens typing clicks by 65% when voice speech is actively identified." },
         { type: "features", title: "Global Utility Hotkeys", text: "Created universal hotkeys (⌥⌘K / Alt+Win+K) to toggle the app's sound engine in the background." },
         { type: "performance", title: "Resource Efficiency", text: "Re-engineered native system loops to cap CPU below 1.2% and RAM footprint under 15MB." }
       ]

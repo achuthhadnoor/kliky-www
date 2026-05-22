@@ -15,12 +15,6 @@ export function FeaturesBento() {
   const [activeOS, setActiveOS] = useState<"mac" | "win">("mac");
   const [isKeysPressed, setIsKeysPressed] = useState(false);
 
-  // Card 4 state: Smart Mic Dampening
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [micAmplitude, setMicAmplitude] = useState<number[]>(
-    Array(30).fill(2)
-  );
-
   useEffect(() => {
     // Generate random waves only on the client
     setLatencyWaves(Array.from({ length: 24 }, () => Math.random() * 20 + 5));
@@ -33,35 +27,12 @@ export function FeaturesBento() {
   // Card 6 state: Productivity Tabs
   const [activeTab, setActiveTab] = useState<"code" | "meet" | "cafe">("code");
 
-  // Update mic waveforms when voice simulation is active
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    let timer: NodeJS.Timeout;
-
-    if (isSpeaking) {
-      interval = setInterval(() => {
-        setMicAmplitude(Array.from({ length: 30 }, () => Math.random() * 28 + 6));
-      }, 100);
-    } else {
-      // Async state update to prevent direct synchronous cascade in render phase
-      timer = setTimeout(() => {
-        setMicAmplitude(Array.from({ length: 30 }, () => Math.random() * 6 + 2));
-      }, 0);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-      if (timer) clearTimeout(timer);
-    };
-  }, [isSpeaking]);
-
-
   // Test Latency trigger
   const triggerLatencyTest = () => {
     if (isTestingLatency) return;
     setIsTestingLatency(true);
     setLatencyText("Measuring...");
-    
+
     // Play sound immediately
     playSwitchSound("zenith", 0.65, 1.1, "KeyA");
 
@@ -76,7 +47,7 @@ export function FeaturesBento() {
   const triggerSwitchActuation = () => {
     setIsSwitchPressed(true);
     playSwitchSound(bluePrintSwitch, 0.7, 1.0, "Space");
-    
+
     setTimeout(() => {
       setIsSwitchPressed(false);
     }, 150);
@@ -110,7 +81,7 @@ export function FeaturesBento() {
 
       {/* Bento 3-Column Responsive Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-4 md:px-6">
-        
+
         {/* CARD 1: Ultra-Low Latency Sound Engine (Col-span 2) */}
         <div className="col-span-1 md:col-span-2 rounded-2xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 z-10">
@@ -121,7 +92,7 @@ export function FeaturesBento() {
                 By bypassing standard browser latency bottlenecks, Kliky achieves close-to-metal rendering using specialized spatial audio graphs.
               </p>
             </div>
-            
+
             {/* Interactive Latency Meter Gauge */}
             <div className="flex flex-col items-center justify-center bg-zinc-100/50 dark:bg-zinc-900/60 border border-zinc-200/40 dark:border-zinc-800/80 rounded-2xl p-4 w-full md:w-44 shrink-0 text-center select-none shadow-md">
               <span className="text-[9px] font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">Delay Transient</span>
@@ -152,8 +123,8 @@ export function FeaturesBento() {
           {/* Wave visualizer lines in background */}
           <div className="absolute right-4 bottom-0 flex items-end gap-1.5 h-16 opacity-10 dark:opacity-5 group-hover:opacity-20 dark:group-hover:opacity-10 transition-opacity duration-300 pointer-events-none">
             {latencyWaves.map((h, i) => (
-              <span 
-                key={i} 
+              <span
+                key={i}
                 className="w-1.5 bg-brand rounded-t transition-all duration-300"
                 style={{ height: `${h}%` }}
               />
@@ -162,7 +133,7 @@ export function FeaturesBento() {
         </div>
 
         {/* CARD 2: Global OS Shortcuts (Col-span 1) */}
-        <div 
+        <div
           onMouseEnter={() => setIsKeysPressed(true)}
           onMouseLeave={() => setIsKeysPressed(false)}
           className="col-span-1 rounded-2xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300 cursor-pointer"
@@ -170,7 +141,7 @@ export function FeaturesBento() {
           <div>
             <div className="flex items-center justify-between">
               <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none">OS Integration</span>
-              
+
               {/* OS Selector Tabs */}
               <div className="flex rounded-lg bg-zinc-100 dark:bg-zinc-900 p-0.5 border border-zinc-200/40 dark:border-zinc-800/80">
                 <button
@@ -222,7 +193,7 @@ export function FeaturesBento() {
                 </div>
               </>
             )}
-            
+
             {/* K cap */}
             <div className={`w-14 h-14 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900/60 flex flex-col justify-between p-2 font-mono text-[9px] font-bold text-zinc-400 dark:text-zinc-500 shadow-md transition-all duration-200 ${isKeysPressed ? "translate-y-1 bg-brand/10 border-brand/30 shadow-inner text-brand" : ""}`}>
               <span>mute</span>
@@ -265,7 +236,7 @@ export function FeaturesBento() {
                 <span className="text-[7px] text-zinc-400 uppercase tracking-wider font-mono">CPU Draw</span>
               </div>
             </div>
-            
+
             <div className="space-y-2 text-[10px] font-mono text-zinc-500 dark:text-zinc-400">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand" />
@@ -283,65 +254,15 @@ export function FeaturesBento() {
           </div>
         </div>
 
-        {/* CARD 4: Smart Microphone Auto-Dampening (Col-span 2) */}
-        <div className="col-span-1 md:col-span-2 rounded-2xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300">
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 z-10">
-            <div>
-              <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none">Smart Filters</span>
-              <h3 className="text-lg font-bold text-zinc-800 dark:text-white font-sans mt-1.5">Microphone Voice Auto-Dampener</h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 max-w-md leading-relaxed">
-                Perfect for virtual meetings. Kliky automatically measures background mic decibels and suppresses mechanical clacks when active speech is recognized.
-              </p>
-            </div>
-
-            {/* Smart Microphone Dampening Tester */}
-            <div className="flex flex-col items-center justify-center bg-zinc-100/50 dark:bg-zinc-900/60 border border-zinc-200/40 dark:border-zinc-800/80 rounded-2xl p-4 w-full md:w-44 shrink-0 text-center select-none shadow-md">
-              <div className="flex items-center gap-1.5">
-                {/* pulsing red dot */}
-                <span className={`w-2 h-2 rounded-full ${isSpeaking ? "bg-red-500 animate-ping" : "bg-zinc-400"}`} />
-                <span className="text-[9px] font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">Voice Broadcast</span>
-              </div>
-              <span className={`text-xs font-bold font-sans mt-2 block transition ${isSpeaking ? "text-brand" : "text-zinc-500 dark:text-zinc-400"}`}>
-                {isSpeaking ? "SPEECH DETECTED" : "SILENT CALM"}
-              </span>
-              <button
-                onClick={() => setIsSpeaking(!isSpeaking)}
-                className="mt-3.5 w-full py-1.5 px-3 bg-brand/10 hover:bg-brand text-brand hover:text-white font-mono font-bold text-[10px] rounded-lg border border-brand/20 hover:border-transparent transition-all active:scale-95 cursor-pointer"
-              >
-                {isSpeaking ? "Mute Microphone" : "Simulate Speech"}
-              </button>
-            </div>
-          </div>
-
-          {/* Interactive Live Amplitude Waveform */}
-          <div className="mt-8 flex items-center justify-between h-8 relative bg-zinc-100/20 dark:bg-zinc-900/10 border border-zinc-200/20 dark:border-zinc-800/20 rounded-xl p-3 select-none overflow-hidden">
-            <span className="text-[8px] font-mono text-zinc-400 dark:text-zinc-500 absolute left-2 top-1 font-bold">MIC AUDIO</span>
-            
-            <div className="flex items-end gap-1 w-full justify-center h-full pt-2">
-              {micAmplitude.map((amp, i) => (
-                <span 
-                  key={i}
-                  className={`w-1 rounded-t transition-all duration-300 ${isSpeaking ? "bg-brand" : "bg-zinc-300 dark:bg-zinc-800"}`}
-                  style={{ height: `${amp}px` }}
-                />
-              ))}
-            </div>
-            
-            <span className="text-[8px] font-mono text-zinc-400 dark:text-zinc-500 absolute right-2 top-1 font-bold">
-              {isSpeaking ? "MUTING CLICKS (65%)" : "FULL ACOUSTICS (100%)"}
-            </span>
-          </div>
-        </div>
-
         {/* CARD 5: Switch Cross-Section Blueprint (Col-span 1) */}
-        <div 
+        <div
           onClick={triggerSwitchActuation}
           className="col-span-1 rounded-2xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300 cursor-pointer select-none"
         >
           <div>
             <div className="flex items-center justify-between">
               <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none">Anatomy Blueprint</span>
-              
+
               {/* stem type switcher */}
               <div className="flex rounded-lg bg-zinc-100 dark:bg-zinc-900 p-0.5 border border-zinc-200/40 dark:border-zinc-800/80">
                 <button
@@ -372,44 +293,44 @@ export function FeaturesBento() {
 
           {/* Interactive Mechanical Switch SVG Blueprint */}
           <div className="mt-6 flex justify-center">
-            <svg 
-              className={`w-32 h-32 transition-transform duration-100 ${isSwitchPressed ? "scale-y-90 origin-bottom" : ""}`} 
-              viewBox="0 0 100 100" 
+            <svg
+              className={`w-32 h-32 transition-transform duration-100 ${isSwitchPressed ? "scale-y-90 origin-bottom" : ""}`}
+              viewBox="0 0 100 100"
               fill="none"
             >
               {/* Upper housing outline */}
               <path d="M15 45L30 20H70L85 45V90H15V45Z" className="stroke-zinc-300 dark:stroke-zinc-800" strokeWidth="2" strokeLinejoin="round" />
-              
+
               {/* Switch Stem with dynamic theme color */}
-              <rect 
-                x="40" 
-                y={isSwitchPressed ? "22" : "12"} 
-                width="20" 
-                height="30" 
-                rx="3" 
-                fill={switchDetails[bluePrintSwitch].color} 
-                className="transition-all duration-100 shadow border border-black/10" 
+              <rect
+                x="40"
+                y={isSwitchPressed ? "22" : "12"}
+                width="20"
+                height="30"
+                rx="3"
+                fill={switchDetails[bluePrintSwitch].color}
+                className="transition-all duration-100 shadow border border-black/10"
               />
-              <rect 
-                x="32" 
-                y={isSwitchPressed ? "32" : "22"} 
-                width="36" 
-                height="12" 
-                rx="2" 
-                fill={switchDetails[bluePrintSwitch].color} 
-                className="transition-all duration-100 shadow border border-black/10" 
+              <rect
+                x="32"
+                y={isSwitchPressed ? "32" : "22"}
+                width="36"
+                height="12"
+                rx="2"
+                fill={switchDetails[bluePrintSwitch].color}
+                className="transition-all duration-100 shadow border border-black/10"
               />
-              
+
               {/* Compression Spring inside housing */}
-              <path 
-                d={isSwitchPressed 
-                  ? "M50 44 C45 44 45 48 50 48 C55 48 55 52 50 52 C45 52 45 56 50 56 C55 56 55 60 50 60 C45 60 45 64 50 64 C55 64 55 68 50 68 C45 68 45 72 50 72 L50 82" 
+              <path
+                d={isSwitchPressed
+                  ? "M50 44 C45 44 45 48 50 48 C55 48 55 52 50 52 C45 52 45 56 50 56 C55 56 55 60 50 60 C45 60 45 64 50 64 C55 64 55 68 50 68 C45 68 45 72 50 72 L50 82"
                   : "M50 34 C45 34 45 40 50 40 C55 40 55 46 50 46 C45 46 45 52 50 52 C55 52 55 58 50 58 C45 58 45 64 50 64 C55 64 55 70 50 70 C45 70 45 76 50 76 L50 82"
-                } 
-                className="stroke-zinc-400 dark:stroke-zinc-700 transition-all duration-100" 
-                strokeWidth="2.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
+                }
+                className="stroke-zinc-400 dark:stroke-zinc-700 transition-all duration-100"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
 
               {/* Lower contacts outline */}
@@ -420,11 +341,11 @@ export function FeaturesBento() {
         </div>
 
         {/* CARD 6: Built for Everyday Productivity (Col-span 2) */}
-        <div className="col-span-1 md:col-span-2 rounded-2xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300">
+        <div className="col-span-1 rounded-2xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300 cursor-pointer select-none">
           <div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center justify-between gap-2">
               <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none">Scenarios & Flow</span>
-              
+
               {/* Scenario Tab Buttons */}
               <div className="flex rounded-lg bg-zinc-100 dark:bg-zinc-900 p-0.5 border border-zinc-200/40 dark:border-zinc-800/80">
                 <button
@@ -447,7 +368,7 @@ export function FeaturesBento() {
                 </button>
               </div>
             </div>
-            
+
             <h3 className="text-lg font-bold text-zinc-800 dark:text-white font-sans mt-3">Created for Daily Routines</h3>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
               Kliky integrates gracefully into standard work processes, matching whatever environment you step into.
@@ -474,7 +395,7 @@ export function FeaturesBento() {
                 <div>
                   <h4 className="text-xs font-bold text-zinc-800 dark:text-white font-mono">Clean Virtual Meetings</h4>
                   <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1 leading-normal font-sans">
-                    Never worry about annoying colleagues during calls. Enable auto-dampening mode or hotkey-mute in a click, allowing you to quietly take notes in Zoom or Slack while keeping sounds local.
+                    Never worry about annoying colleagues during calls. Enable hotkey-mute in a click, allowing you to quietly take notes in Zoom or Slack while keeping sounds local.
                   </p>
                 </div>
               </div>
@@ -510,7 +431,7 @@ export function FeaturesBento() {
               <span className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/80 text-zinc-600 dark:text-zinc-300">Curated Quotes</span>
             </div>
           </div>
-          
+
           <div className="mt-8 md:mt-0 z-10 w-full md:w-1/2 flex justify-center">
             <div className="w-full max-w-sm rounded-xl bg-zinc-100/50 dark:bg-zinc-900/50 border border-zinc-200/40 dark:border-zinc-800/60 p-5 shadow-lg relative overflow-hidden">
               {/* Animated Progress Bar */}

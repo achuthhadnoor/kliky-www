@@ -24,10 +24,6 @@ export function FAQSection() {
       answer: "No. Unlike bulky Electron-based applications, Kliky is engineered natively in Rust to communicate directly with your operating system's audio drivers. It consumes less than 1.2% CPU and under 15MB of RAM, making its battery footprint practically unnoticeable even during intense, continuous typing sessions."
     },
     {
-      question: "How does the Smart Mic Auto-Dampener work during Zoom or Teams calls?",
-      answer: "Kliky's desktop client features a local, privacy-safe mic listener. When you are on a virtual call and speak into your microphone, Kliky instantly detects the voice amplitude and automatically dampens typing clacks by 65%. This lets you take notes during meetings without distracting colleagues. You can also toggle Kliky on/off instantly using global keyboard shortcuts."
-    },
-    {
       question: "Why can't I hear any typing audio in the web sandbox?",
       answer: "Modern web browsers enforce strict security policies that prevent audio from playing automatically before you interact with the page. Simply click anywhere inside the text area sandbox, tap 'Test Latency' on the low-latency card, or actuate the switch stem on the switch blueprint to initialize the Web Audio context."
     },
