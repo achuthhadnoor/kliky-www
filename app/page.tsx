@@ -7,7 +7,7 @@ import { RightSidebar } from "./components/right-sidebar";
 import { SwitchType } from "./components/audio";
 
 export default function Home() {
-  const [activeSwitch, setActiveSwitch] = useState<SwitchType>("default");
+  const [activeSwitch, setActiveSwitch] = useState<SwitchType>("zenith");
   const [volume, setVolume] = useState<number>(0.5);
   const [pitch, setPitch] = useState<number>(1.0);
 

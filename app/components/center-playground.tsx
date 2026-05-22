@@ -25,13 +25,8 @@ export function CenterPlayground({
 
   // Trigger sound and animations on key press
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // Exclude modifier keys from making sound to avoid clutter
-    if (["Shift", "Control", "Alt", "Meta"].includes(e.key)) {
-      return;
-    }
-
-    // Play procedural mechanical click sound
-    playSwitchSound(activeSwitch, volume, pitch, e.key);
+    // Play native mechanical click sound using the physical key code (e.g. "KeyQ", "Space")
+    playSwitchSound(activeSwitch, volume, pitch, e.code);
 
     // Audio frequency animation state
     setIsTyping(true);
@@ -82,10 +77,11 @@ export function CenterPlayground({
   };
 
   const activeSwitchLabel = {
-    default: "Official Kliky Pack",
-    blue: "Cherry MX Blue (Clicky)",
-    creamy: "Creamy Cocoa (Linear)",
-    retro: "Vintage Typewriter (Metallic)",
+    zenith: "Zenith (Smooth Linear)",
+    obsidian: "Obsidian (Crisp Tactile)",
+    sapphire: "Sapphire (Sharp Clicky)",
+    velvet: "Velvet (Creamy Linear)",
+    neon: "Neon (Retro 8-bit)",
   }[activeSwitch];
 
   return (

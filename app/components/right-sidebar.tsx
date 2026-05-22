@@ -34,100 +34,124 @@ export function RightSidebar({
         </div>
 
         <div className="grid grid-cols-1 gap-3">
-          {/* Tile 0: Official Kliky Pack */}
+          {/* Tile 1: Zenith */}
           <button
-            onClick={() => setActiveSwitch("default")}
+            onClick={() => setActiveSwitch("zenith")}
             className={`glow-on-hover w-full flex items-center justify-between text-left p-4 rounded-xl glass-panel transition relative ${
-              activeSwitch === "default"
+              activeSwitch === "zenith"
                 ? "border-brand/60 bg-brand/10 shadow-lg shadow-brand/5"
                 : "hover:border-zinc-800/80"
             }`}
           >
             <div>
-              <p className="text-xs font-bold font-sans text-white">Official Kliky Pack</p>
-              <p className="text-[10px] font-mono text-zinc-400 mt-1">Sampled WAVs • Default</p>
+              <p className="text-xs font-bold font-sans text-white">Zenith</p>
+              <p className="text-[10px] font-mono text-zinc-400 mt-1">Smooth Linear • Default</p>
             </div>
             <div
               className={`w-3 h-3 rounded-full flex items-center justify-center border ${
-                activeSwitch === "default" ? "bg-brand border-brand" : "border-zinc-700"
+                activeSwitch === "zenith" ? "bg-brand border-brand" : "border-zinc-700"
               }`}
             >
-              {activeSwitch === "default" && <div className="w-1 h-1 bg-white rounded-full" />}
+              {activeSwitch === "zenith" && <div className="w-1 h-1 bg-white rounded-full" />}
             </div>
             {/* stem color preview block */}
             <div className="absolute right-12 top-4 w-4 h-4 rounded bg-brand opacity-80 border border-black/40" />
           </button>
 
-          {/* Tile 1: Cherry Blue */}
+          {/* Tile 2: Obsidian */}
           <button
-            onClick={() => setActiveSwitch("blue")}
+            onClick={() => setActiveSwitch("obsidian")}
             className={`glow-on-hover w-full flex items-center justify-between text-left p-4 rounded-xl glass-panel transition relative ${
-              activeSwitch === "blue"
+              activeSwitch === "obsidian"
                 ? "border-brand/60 bg-brand/10 shadow-lg shadow-brand/5"
                 : "hover:border-zinc-800/80"
             }`}
           >
             <div>
-              <p className="text-xs font-bold font-sans text-white">Cherry MX Blue</p>
-              <p className="text-[10px] font-mono text-zinc-400 mt-1">Clicky & Crisp • 55g</p>
+              <p className="text-xs font-bold font-sans text-white">Obsidian</p>
+              <p className="text-[10px] font-mono text-zinc-400 mt-1">Crisp Tactile • Heavy Thock</p>
             </div>
             <div
               className={`w-3 h-3 rounded-full flex items-center justify-center border ${
-                activeSwitch === "blue" ? "bg-brand border-brand" : "border-zinc-700"
+                activeSwitch === "obsidian" ? "bg-brand border-brand" : "border-zinc-700"
               }`}
             >
-              {activeSwitch === "blue" && <div className="w-1 h-1 bg-white rounded-full" />}
+              {activeSwitch === "obsidian" && <div className="w-1 h-1 bg-white rounded-full" />}
             </div>
             {/* stem color preview block */}
-            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#008cff] opacity-60 border border-black/40" />
+            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#2e3138] opacity-90 border border-zinc-700" />
           </button>
 
-          {/* Tile 2: Creamy Cocoa */}
+          {/* Tile 3: Sapphire */}
           <button
-            onClick={() => setActiveSwitch("creamy")}
+            onClick={() => setActiveSwitch("sapphire")}
             className={`glow-on-hover w-full flex items-center justify-between text-left p-4 rounded-xl glass-panel transition relative ${
-              activeSwitch === "creamy"
+              activeSwitch === "sapphire"
                 ? "border-brand/60 bg-brand/10 shadow-lg shadow-brand/5"
                 : "hover:border-zinc-800/80"
             }`}
           >
             <div>
-              <p className="text-xs font-bold font-sans text-white">Creamy Cocoa</p>
-              <p className="text-[10px] font-mono text-zinc-400 mt-1">Dampened Linear • 45g</p>
+              <p className="text-xs font-bold font-sans text-white">Sapphire</p>
+              <p className="text-[10px] font-mono text-zinc-400 mt-1">Sharp Clicky • Double Snap</p>
             </div>
             <div
               className={`w-3 h-3 rounded-full flex items-center justify-center border ${
-                activeSwitch === "creamy" ? "bg-brand border-brand" : "border-zinc-700"
+                activeSwitch === "sapphire" ? "bg-brand border-brand" : "border-zinc-700"
               }`}
             >
-              {activeSwitch === "creamy" && <div className="w-1 h-1 bg-white rounded-full" />}
+              {activeSwitch === "sapphire" && <div className="w-1 h-1 bg-white rounded-full" />}
             </div>
             {/* stem color preview block */}
-            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#8B5A2B] opacity-60 border border-black/40" />
+            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#00c8ff] opacity-80 border border-black/40" />
           </button>
 
-          {/* Tile 3: Vintage Typewriter */}
+          {/* Tile 4: Velvet */}
           <button
-            onClick={() => setActiveSwitch("retro")}
+            onClick={() => setActiveSwitch("velvet")}
             className={`glow-on-hover w-full flex items-center justify-between text-left p-4 rounded-xl glass-panel transition relative ${
-              activeSwitch === "retro"
+              activeSwitch === "velvet"
                 ? "border-brand/60 bg-brand/10 shadow-lg shadow-brand/5"
                 : "hover:border-zinc-800/80"
             }`}
           >
             <div>
-              <p className="text-xs font-bold font-sans text-white">Vintage Typewriter</p>
-              <p className="text-[10px] font-mono text-zinc-400 mt-1">Metallic Clink • Heavy</p>
+              <p className="text-xs font-bold font-sans text-white">Velvet</p>
+              <p className="text-[10px] font-mono text-zinc-400 mt-1">Banana Split • Creamy Linear</p>
             </div>
             <div
               className={`w-3 h-3 rounded-full flex items-center justify-center border ${
-                activeSwitch === "retro" ? "bg-brand border-brand" : "border-zinc-700"
+                activeSwitch === "velvet" ? "bg-brand border-brand" : "border-zinc-700"
               }`}
             >
-              {activeSwitch === "retro" && <div className="w-1 h-1 bg-white rounded-full" />}
+              {activeSwitch === "velvet" && <div className="w-1 h-1 bg-white rounded-full" />}
             </div>
             {/* stem color preview block */}
-            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#b0b5bc] opacity-60 border border-black/40" />
+            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#e5a93b] opacity-80 border border-black/40" />
+          </button>
+
+          {/* Tile 5: Neon */}
+          <button
+            onClick={() => setActiveSwitch("neon")}
+            className={`glow-on-hover w-full flex items-center justify-between text-left p-4 rounded-xl glass-panel transition relative ${
+              activeSwitch === "neon"
+                ? "border-brand/60 bg-brand/10 shadow-lg shadow-brand/5"
+                : "hover:border-zinc-800/80"
+            }`}
+          >
+            <div>
+              <p className="text-xs font-bold font-sans text-white">Neon</p>
+              <p className="text-[10px] font-mono text-zinc-400 mt-1">Retro Chiptune • 8-bit Classic</p>
+            </div>
+            <div
+              className={`w-3 h-3 rounded-full flex items-center justify-center border ${
+                activeSwitch === "neon" ? "bg-brand border-brand" : "border-zinc-700"
+              }`}
+            >
+              {activeSwitch === "neon" && <div className="w-1 h-1 bg-white rounded-full" />}
+            </div>
+            {/* stem color preview block */}
+            <div className="absolute right-12 top-4 w-4 h-4 rounded bg-[#ab47bc] opacity-80 border border-black/40" />
           </button>
         </div>
       </div>
