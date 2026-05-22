@@ -7,6 +7,7 @@ import { RightSidebar } from "./components/right-sidebar";
 import { Toolbar } from "./components/toolbar";
 import { FeaturesBento } from "./components/features-bento";
 import { PricingSection } from "./components/pricing-section";
+import { ChangelogPreview } from "./components/changelog-preview";
 import { FAQSection } from "./components/faq-section";
 import { SwitchType } from "./components/audio";
 
@@ -74,6 +75,9 @@ export default function Home() {
 
         {/* Pricing & Future Roadmap Section */}
         <PricingSection />
+
+        {/* Changelog Timeline Preview Section */}
+        <ChangelogPreview />
 
         {/* Accordion FAQ Section */}
         <FAQSection />

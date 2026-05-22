@@ -1,7 +1,12 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useGitHubReleases } from "../hooks/use-github-releases";
 
 export function LeftSidebar() {
+  const { latestVersion, macUrl, winUrl } = useGitHubReleases();
+
   return (
     <div className="flex flex-col justify-between h-full py-2 space-y-8">
       {/* Branding & Logo */}
@@ -19,7 +24,7 @@ export function LeftSidebar() {
             />
           </div>
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white font-sans flex items-center">
+            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-950 dark:text-white font-sans flex items-center">
               kliky<span className="text-brand">.</span>
             </h1>
             <p className="text-xs font-semibold uppercase tracking-wider text-brand/80 font-mono">
@@ -51,11 +56,13 @@ export function LeftSidebar() {
       </div>
 
       {/* Download Action Section */}
-      <div className="space-y-3 pt-6 border-t border-zinc-200 dark:border-zinc-900">
+      <div className="space-y-3 pt-6 border-t border-zinc-200 dark:border-zinc-900/60">
         {/* macOS button */}
         <a
-          href="#"
-          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand to-[#d946ef] py-3.5 text-xs font-bold text-white shadow-xl hover:shadow-brand/20 active:scale-95 transition"
+          href={macUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-brand to-[#d946ef] py-3.5 text-xs font-bold text-white shadow-xl hover:shadow-brand/20 active:scale-95 transition cursor-pointer select-none"
         >
           {/* Apple Download Icon */}
           <svg
@@ -69,8 +76,10 @@ export function LeftSidebar() {
 
         {/* Windows button */}
         <a
-          href="#"
-          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl glass-panel py-3.5 text-xs font-bold text-zinc-800 dark:text-white border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 active:scale-95 transition bg-zinc-100/50 dark:bg-zinc-900/40"
+          href={winUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="glow-on-hover flex w-full items-center justify-center gap-3 rounded-2xl glass-panel py-3.5 text-xs font-bold text-zinc-800 dark:text-white border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 active:scale-95 transition bg-zinc-100/50 dark:bg-zinc-900/40 cursor-pointer select-none"
         >
           {/* Windows Download Icon */}
           <svg
@@ -82,8 +91,8 @@ export function LeftSidebar() {
           Download for Windows
         </a>
 
-        <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 dark:text-zinc-500 px-1 pt-1">
-          <span>v1.2.4 (Universal)</span>
+        <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 dark:text-zinc-500 px-1 pt-1 select-none">
+          <span>{latestVersion} (Universal)</span>
           <span>•</span>
           <span className="text-zinc-500 dark:text-zinc-400">Free to Try</span>
         </div>
