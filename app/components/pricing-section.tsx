@@ -178,8 +178,8 @@ export function PricingSection() {
         {/* CARD 2: Creator Pro (speculative roadmap coming soon) */}
         <div className="rounded-3xl glass-panel border-2 border-brand/30 dark:border-brand/40 p-8 flex flex-col justify-between hover:border-brand transition-all duration-300 shadow-xl shadow-brand/5 relative overflow-hidden bg-brand/[0.03] dark:bg-brand/[0.01]">
           {/* Coming Soon Glowing Tag */}
-          <div className="absolute top-0 right-0 transform translate-x-12 translate-y-4 rotate-45 bg-gradient-to-r from-brand to-indigo-600 text-white text-[9px] font-bold font-mono tracking-widest uppercase py-1 px-12 shadow-sm relative z-20 select-none">
-            Roadmap
+          <div className="absolute top-0 right-0 transform translate-x-12 translate-y-4 rotate-45 bg-gradient-to-r from-brand to-indigo-600 text-white text-[9px] font-bold font-mono tracking-widest uppercase py-1 px-12 shadow-sm z-20 select-none">
+            coming soon
           </div>
 
           <div>

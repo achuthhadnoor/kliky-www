@@ -11,6 +11,8 @@ import { ChangelogPreview } from "./components/changelog-preview";
 import { FAQSection } from "./components/faq-section";
 import { SwitchType } from "./components/audio";
 
+import { ThemeSwitch } from "./components/theme-switch";
+
 export default function Home() {
   const [activeSwitch, setActiveSwitch] = useState<SwitchType>("zenith");
   const [volume, setVolume] = useState<number>(0.5);
@@ -88,7 +90,9 @@ export default function Home() {
       {/* Decorative Brand Tagline at bottom footer */}
       <footer className="relative z-10 w-full max-w-7xl mx-auto mt-24 pt-6 border-t border-zinc-200 dark:border-zinc-900/40 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-600 gap-4">
         <p>© 2026 Kliky App. Built with high-fidelity procedural Web Audio.</p>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4 flex-wrap justify-center">
+          <ThemeSwitch />
+          <span className="hidden lg:inline">•</span>
           <a href="#" className="hover:text-brand transition">Privacy Policy</a>
           <span>•</span>
           <a href="#" className="hover:text-brand transition">Terms of Service</a>
