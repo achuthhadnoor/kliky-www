@@ -20,6 +20,18 @@ export function FAQSection() {
       answer: "Kliky operates strictly offline and respects your privacy. On the desktop client, it utilizes secure native system APIs (such as CGEventTap on macOS and low-level keyboard hooks on Windows) solely to detect keypress events and calculate spatial sound coordinates. It never reads or records character inputs, does not create text logs, and makes zero network requests. The entire utility is audit-ready and open-source on GitHub."
     },
     {
+      question: "What is the local SQLite database used for? Is my analytics data private?",
+      answer: "Kliky includes a local SQLite database that records daily batches of keystroke milestones. This allows you to track typing speed (WPM) and daily keystroke counts completely offline. All data is kept 100% offline in your local configurations folder. Absolutely zero analytical telemetry is collected, uploaded, or shared with external servers."
+    },
+    {
+      question: "What is the 'Hyper Key' and how does the Caps Lock converter work?",
+      answer: "The 'Hyper Key' is a powerful keyboard hack that binds the complex four-modifier shortcut combination (Command + Option + Control + Shift) onto a single key, typically the underused Caps Lock. In Kliky, enabling this allows you to trigger global system macros, toggle sound profiles, and control Kliky features instantly from the home row without ever worrying about keyboard shortcut conflicts in other applications."
+    },
+    {
+      question: "How does the background auto-updater work?",
+      answer: "Kliky integrates Tauri's native build updater framework. Five seconds after starting up, Kliky silently checks our secure GitHub releases endpoint in the background. If a new version is available, it brings up a native pop-up prompting you to download and install the update in a single click, automatically restarting the app to apply changes."
+    },
+    {
       question: "Will Kliky drain my laptop's battery?",
       answer: "No. Unlike bulky Electron-based applications, Kliky is engineered natively in Rust to communicate directly with your operating system's audio drivers. It consumes less than 1.2% CPU and under 15MB of RAM, making its battery footprint practically unnoticeable even during intense, continuous typing sessions."
     },

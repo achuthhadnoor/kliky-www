@@ -6,6 +6,7 @@ import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
 import { Toolbar } from "./components/toolbar";
 import { FeaturesBento } from "./components/features-bento";
+import { OnboardingCarousel } from "./components/onboarding-carousel";
 import { PricingSection } from "./components/pricing-section";
 import { ChangelogPreview } from "./components/changelog-preview";
 import { FAQSection } from "./components/faq-section";
@@ -82,6 +83,9 @@ export default function Home() {
 
         {/* Bento Grid Feature Section */}
         <FeaturesBento />
+
+        {/* 7-Step Onboarding Walkthrough Carousel */}
+        <OnboardingCarousel />
 
         {/* Pricing & Future Roadmap Section */}
         <PricingSection />

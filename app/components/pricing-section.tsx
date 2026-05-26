@@ -127,6 +127,9 @@ export function PricingSection() {
               {[
                 "5 Premium sound packs pre-loaded",
                 "Load custom packs (drag-and-drop WAV)",
+                "Local SQLite Analytics Journaling",
+                "Menubar Magic & status key display",
+                "Seamless Tauri background auto-updater",
                 "Universal macOS and Windows clients",
                 "100% private and fully open-source"
               ].map((feature, i) => (
