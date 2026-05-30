@@ -17,7 +17,7 @@ const ONBOARDING_STEPS: Step[] = [
     description: "Experience typing in a whole new dimension. Kliky runs quietly in your system tray, listening to global physical keystrokes and translating them into satisfying mechanical keyboard acoustics.",
     bulletPoints: [
       "Low latency (<3ms response time)",
-      "Protects battery life (native Rust hooks)",
+      "Protects battery life (native operating system hooks)",
       "Zero background logging or data capture"
     ]
   },
@@ -28,7 +28,7 @@ const ONBOARDING_STEPS: Step[] = [
     bulletPoints: [
       "No keystrokes are recorded or sent to the cloud",
       "Secured inside the sandbox with local permissions",
-      "Fully auditable, open-source codebase"
+      "Fully secure, offline audit-ready code"
     ]
   },
   {

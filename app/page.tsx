@@ -108,8 +108,6 @@ export default function Home() {
           <a href="#" className="hover:text-brand transition">Privacy Policy</a>
           <span>•</span>
           <a href="#" className="hover:text-brand transition">Terms of Service</a>
-          <span>•</span>
-          <a href="#" className="hover:text-brand transition">GitHub</a>
         </div>
       </footer>
     </div>

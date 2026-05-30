@@ -24,10 +24,9 @@ export function FeaturesBento() {
   const [bluePrintSwitch, setBlueprintSwitch] = useState<SwitchType>("zenith");
   const [isSwitchPressed, setIsSwitchPressed] = useState(false);
 
-  // --- CARD 6: Custom Pack Creator State ---
-  const [selectedPackTab, setSelectedPackTab] = useState<"upload" | "json">("upload");
-  const [dragActive, setDragActive] = useState(false);
-  const [uploadedPackName, setUploadedPackName] = useState<string | null>(null);
+  // --- CARD 6: 3D Acoustic Panning State ---
+  const [activePanKey, setActivePanKey] = useState<string | null>(null);
+  const [activePanVal, setActivePanVal] = useState<number>(0.0);
 
   // --- CARD 7: Scenario Planner State ---
   const [activeTab, setActiveTab] = useState<"code" | "meet" | "cafe">("code");
@@ -102,29 +101,15 @@ export function FeaturesBento() {
     neon: { name: "Neon", desc: "Retro 8-bit", color: "#ab47bc" },
   };
 
-  // --- CARD 6: File Upload Mock ---
-  const handleDrag = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const file = e.dataTransfer.files[0];
-      if (file.name.endsWith(".zip") || file.name.endsWith(".json")) {
-        setUploadedPackName(file.name);
-        playSwitchSound("sapphire", 0.7, 1.1, "Enter");
-      }
-    }
+  // --- CARD 6: 3D Acoustic Panning Trigger ---
+  const triggerPanKey = (letter: string, code: string, panVal: number) => {
+    setActivePanKey(letter);
+    setActivePanVal(panVal);
+    playSwitchSound(bluePrintSwitch, 0.75, 1.0, code);
+    
+    setTimeout(() => {
+      setActivePanKey(null);
+    }, 150);
   };
 
   return (
@@ -387,75 +372,74 @@ export function FeaturesBento() {
           </div>
         </div>
 
-        {/* CARD 6: Custom Pack Creator (Col-span 1) */}
+        {/* CARD 6: Spatial 3D Audio (Col-span 1) */}
         <div
-          onDragEnter={handleDrag}
-          onDragOver={handleDrag}
-          onDragLeave={handleDrag}
-          onDrop={handleDrop}
-          className={`col-span-1 rounded-3xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border transition-all duration-300 ${
-            dragActive 
-              ? "border-brand bg-brand/5 shadow-lg shadow-brand/5" 
-              : "border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20"
-          }`}
+          className="col-span-1 rounded-3xl glass-panel p-6 flex flex-col justify-between relative overflow-hidden group border border-zinc-200/50 dark:border-zinc-800/40 hover:border-brand/30 dark:hover:border-brand/20 transition-all duration-300 select-none"
         >
           <div>
             <div className="flex justify-between items-center">
-              <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none">Pack Creator</span>
-              <div className="flex rounded-lg bg-zinc-100 dark:bg-zinc-900 p-0.5 border border-zinc-200/40 dark:border-zinc-800/80">
-                <button
-                  onClick={(e) => { e.stopPropagation(); setSelectedPackTab("upload"); }}
-                  className={`px-1.5 py-0.5 text-[8px] font-mono font-bold rounded cursor-pointer transition ${selectedPackTab === "upload" ? "bg-white dark:bg-zinc-800 text-brand shadow" : "text-zinc-400"}`}
-                >
-                  ZIP Upload
-                </button>
-                <button
-                  onClick={(e) => { e.stopPropagation(); setSelectedPackTab("json"); }}
-                  className={`px-1.5 py-0.5 text-[8px] font-mono font-bold rounded cursor-pointer transition ${selectedPackTab === "json" ? "bg-white dark:bg-zinc-800 text-brand shadow" : "text-zinc-400"}`}
-                >
-                  Config Overrides
-                </button>
-              </div>
+              <span className="text-[9px] font-bold font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none">Spatializer</span>
+              <span className="text-[9px] font-bold font-mono text-brand bg-brand/10 border border-brand/20 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                Stereo Panning
+              </span>
             </div>
-            <h3 className="text-lg font-bold text-zinc-800 dark:text-white font-sans mt-3">Custom Pack Creator</h3>
+            <h3 className="text-lg font-bold text-zinc-800 dark:text-white font-sans mt-3">Spatial 3D Audio</h3>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
-              Drag-and-drop custom `.wav` sample archives. Micro-tune volume and pitch overrides in a simple `config.json`.
+              Kliky dynamically pans switch acoustics across the stereo soundstage. Keys on the left sound left, keys on the right sound right.
             </p>
           </div>
 
-          {/* Interactive upload dashboard mock */}
-          <div className="mt-5 min-h-[120px] flex items-center justify-center rounded-xl bg-zinc-100/30 dark:bg-zinc-900/10 border border-dashed border-zinc-300 dark:border-zinc-800 p-4 transition-all duration-300">
-            {selectedPackTab === "upload" ? (
-              <div className="text-center font-mono text-[10px] text-zinc-400 max-w-[200px]">
-                {uploadedPackName ? (
-                  <div className="space-y-1 animate-in zoom-in-95">
-                    <p className="text-emerald-500 font-bold">✓ Loaded successfully</p>
-                    <p className="text-zinc-600 dark:text-zinc-300 truncate font-semibold">{uploadedPackName}</p>
-                    <button 
-                      onClick={() => setUploadedPackName(null)}
-                      className="text-[9px] text-red-400 hover:text-red-300 underline mt-1.5 cursor-pointer"
-                    >
-                      Remove Pack
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <span className="text-lg block mb-1">📂</span>
-                    <p className="font-semibold text-zinc-600 dark:text-zinc-300">Drag &amp; Drop ZIP file</p>
-                    <p className="text-[9px] text-zinc-500 mt-0.5">Containing config.json and WAVs</p>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="w-full text-left font-mono text-[9px] leading-tight text-zinc-600 dark:text-zinc-400 max-h-[100px] overflow-y-auto">
-                <p className="text-brand font-bold">// config.json overrides</p>
-                <p className="pl-2">{"{"}</p>
-                <p className="pl-4 text-emerald-600 dark:text-emerald-500">"name": "Custom Velvet",</p>
-                <p className="pl-4">"sounds": {"{ \"Space\": \"space.wav\" }"},</p>
-                <p className="pl-4">"settings": {"{ \"Space\": { \"pitch\": 1.1, \"volume\": 0.8 } }"}</p>
-                <p className="pl-2">{"}"}</p>
-              </div>
-            )}
+          {/* Interactive panning keyboard row widget */}
+          <div className="mt-5 p-4 rounded-xl bg-zinc-100/30 dark:bg-zinc-900/10 border border-zinc-200/30 dark:border-zinc-800/30 flex flex-col items-center justify-center space-y-3">
+            {/* Row 1: Alphas (Left-to-Right Panning) */}
+            <div className="flex gap-1.5 flex-wrap justify-center w-full">
+              {([
+                { char: "Q", code: "KeyQ", pan: -0.8 },
+                { char: "E", code: "KeyE", pan: -0.6 },
+                { char: "T", code: "KeyT", pan: -0.4 },
+                { char: "U", code: "KeyU", pan: -0.2 },
+                { char: "O", code: "KeyO", pan: 0.0 },
+                { char: "P", code: "KeyP", pan: 0.1 },
+              ] as const).map((k) => (
+                <button
+                  key={k.char}
+                  onClick={() => triggerPanKey(k.char, k.code, k.pan)}
+                  className={`w-9 h-9 rounded-lg border font-mono text-xs font-bold transition flex items-center justify-center cursor-pointer active:translate-y-0.5 shadow-sm ${
+                    activePanKey === k.char
+                      ? "bg-brand border-brand text-white shadow-md shadow-brand/10 scale-95"
+                      : "bg-background border-border text-foreground hover:border-brand/40"
+                  }`}
+                >
+                  {k.char}
+                </button>
+              ))}
+            </div>
+
+            {/* Row 2: Distinct Function Keys (Unique switch profiles!) */}
+            <div className="flex gap-1.5 w-full justify-center">
+              {([
+                { char: "⌫ Backspace", code: "Backspace", pan: 0.5, style: "flex-1 text-[10px]" },
+                { char: "␣ Space", code: "Space", pan: 0.0, style: "flex-2 text-[10px]" },
+                { char: "↵ Enter", code: "Enter", pan: 0.6, style: "flex-1 text-[10px]" },
+              ] as const).map((k) => (
+                <button
+                  key={k.char}
+                  onClick={() => triggerPanKey(k.char, k.code, k.pan)}
+                  className={`h-9 rounded-lg border font-sans font-bold transition flex items-center justify-center cursor-pointer active:translate-y-0.5 shadow-sm px-2 ${k.style} ${
+                    activePanKey === k.char
+                      ? "bg-brand border-brand text-white shadow-md shadow-brand/10 scale-95"
+                      : "bg-background border-border text-foreground hover:border-brand/40"
+                  }`}
+                >
+                  {k.char}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex justify-between w-full font-mono text-[9px] text-zinc-400 pt-1">
+              <span>Pan Level: <strong className="text-zinc-700 dark:text-zinc-200">{activePanKey ? `${activePanVal.toFixed(2)}` : "0.00"}</strong></span>
+              <span className="text-brand">Click to test →</span>
+            </div>
           </div>
         </div>
 

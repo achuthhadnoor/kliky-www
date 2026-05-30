@@ -129,9 +129,9 @@ export function PricingSection() {
                 "Load custom packs (drag-and-drop WAV)",
                 "Local SQLite Analytics Journaling",
                 "Menubar Magic & status key display",
-                "Seamless Tauri background auto-updater",
+                "Seamless desktop background auto-updater",
                 "Universal macOS and Windows clients",
-                "100% private and fully open-source"
+                "100% private and locally secure"
               ].map((feature, i) => (
                 <li key={i} className="flex items-start text-xs font-sans text-zinc-700 dark:text-zinc-300">
                   <svg className="w-4 h-4 text-emerald-500 mr-2.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -144,9 +144,7 @@ export function PricingSection() {
           </div>
 
           <a
-            href="https://github.com/achuthhadnoor/kliky-www/releases"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
             className="w-full text-center py-3 px-4 rounded-xl border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 text-xs font-bold tracking-wide transition-all shadow-sm cursor-pointer select-none font-sans"
           >
             Start Free Trial

@@ -132,7 +132,7 @@ export function ChangelogPreview() {
             <div className="flex md:flex-col justify-between md:justify-start items-center md:items-start shrink-0 border-b md:border-b-0 md:border-r border-zinc-200/60 dark:border-zinc-800/60 pb-5 md:pb-0 md:pr-10 w-full md:w-40">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl font-black font-mono tracking-tight text-zinc-950 dark:text-white">v1.2.0</span>
+                  <span className="text-2xl font-black font-mono tracking-tight text-zinc-950 dark:text-white">v1.3.0</span>
                   <span className="flex h-2 w-2 relative">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -152,25 +152,25 @@ export function ChangelogPreview() {
             <div className="flex-1 flex flex-col justify-between">
               <div>
                 <h4 className="text-sm font-bold text-zinc-950 dark:text-white font-sans tracking-wide">
-                  The High-Fidelity &amp; Bento Release
+                  The Monkeytype Typing &amp; Premium Acoustics Release
                 </h4>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 font-sans mt-1">
-                  Major upgrades targeting spatial synthesizer layers and modular interactive features lists.
+                  Major updates targeting spatial synthesizer layers, mechanical thock accents, and client visual redesigns.
                 </p>
 
                 <ul className="mt-5 space-y-3.5">
                   {[
                     {
-                      title: "Acoustics Update",
-                      text: "Integrated premium Velvet (Creamy) and Neon (8-bit) high-fidelity switch sound profiles."
+                      title: "Monkeytype Playground",
+                      text: "Integrated a professional 3-mode typing engine (Time, Words, Quotes) with smooth caret animations and live metrics panels."
                     },
                     {
-                      title: "Synthesizer Engine",
-                      text: "Engineered low-latency browser audio node achieving under 3.5ms delay bounds."
+                      title: "Spatial Stereo Panning",
+                      text: "Added dedicated multi-axis pan coordinates for spatial keys and distinct mechanical audio clips for Space, Enter, and Backspace."
                     },
                     {
-                      title: "Bento Features Showcase",
-                      text: "Designed fully modular interactive bento grid featuring live delay testers and switch anatomy vectors."
+                      title: "Modern Red Brand Accent",
+                      text: "Redesigned app-wide settings panels, custom volume sliders, double-confirmation factory resets, and private diagnostic feeds using Kliky Red (#ef4444)."
                     }
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start text-xs font-sans text-zinc-700 dark:text-zinc-300">

@@ -17,7 +17,7 @@ export function FAQSection() {
   const faqs: FAQItem[] = [
     {
       question: "How does Kliky capture keystrokes globally? Does it log my typing?",
-      answer: "Kliky operates strictly offline and respects your privacy. On the desktop client, it utilizes secure native system APIs (such as CGEventTap on macOS and low-level keyboard hooks on Windows) solely to detect keypress events and calculate spatial sound coordinates. It never reads or records character inputs, does not create text logs, and makes zero network requests. The entire utility is audit-ready and open-source on GitHub."
+      answer: "Kliky operates strictly offline and respects your privacy. On the desktop client, it utilizes secure native system APIs (such as CGEventTap on macOS and low-level keyboard hooks on Windows) solely to detect keypress events and calculate spatial sound coordinates. It never reads or records character inputs, does not create text logs, and makes zero network requests. The entire utility runs locally on your machine with absolutely no tracking."
     },
     {
       question: "What is the local SQLite database used for? Is my analytics data private?",
@@ -29,11 +29,11 @@ export function FAQSection() {
     },
     {
       question: "How does the background auto-updater work?",
-      answer: "Kliky integrates Tauri's native build updater framework. Five seconds after starting up, Kliky silently checks our secure GitHub releases endpoint in the background. If a new version is available, it brings up a native pop-up prompting you to download and install the update in a single click, automatically restarting the app to apply changes."
+      answer: "Kliky integrates native build updater frameworks. Five seconds after starting up, Kliky silently checks our secure update endpoint in the background. If a new version is available, it brings up a native pop-up prompting you to download and install the update in a single click, automatically restarting the app to apply changes."
     },
     {
       question: "Will Kliky drain my laptop's battery?",
-      answer: "No. Unlike bulky Electron-based applications, Kliky is engineered natively in Rust to communicate directly with your operating system's audio drivers. It consumes less than 1.2% CPU and under 15MB of RAM, making its battery footprint practically unnoticeable even during intense, continuous typing sessions."
+      answer: "No. Unlike bulky desktop applications, Kliky is engineered natively to communicate directly with your operating system's audio drivers. It consumes less than 1.2% CPU and under 15MB of RAM, making its battery footprint practically unnoticeable even during intense, continuous typing sessions."
     },
     {
       question: "Why can't I hear any typing audio in the web sandbox?",

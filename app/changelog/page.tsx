@@ -48,10 +48,22 @@ export default function ChangelogPage() {
   // --- STATIC FALLBACK DATA ---
   const changelogEntries: ChangelogVersion[] = [
     {
+      version: "v1.3.0",
+      date: "May 2026",
+      tagline: "The Monkeytype Typing & Premium Acoustics Update",
+      isLatest: true,
+      bullets: [
+        { type: "features", title: "Monkeytype Typing Sandbox Overhaul", text: "Integrated a custom 3-mode typing engine (Time, Words, Quotes) featuring smooth caret physics, live metrics (WPM, Accuracy, and Key Strokes), and hotkey-driven Tab restarts." },
+        { type: "acoustics", title: "Special Functional Key Sounds & Stereo Panning", text: "Mapped dedicated spatial acoustic triggers for spacebar, enter, and backspace key hits. Integrated multi-axis 3D stereo panning coordinates for standard keys." },
+        { type: "performance", title: "Global Sleek Brand Red Accent Theme", text: "Standardized the branding scheme to Red (#ef4444), overhaul settings navigation interfaces, premium range sliders, and active system diagnosis panels." },
+        { type: "features", title: "High-Fidelity Audio Controls & Diagnostics", text: "Added interactive live-bouncing soundwave visualizers for linear, tactile, clicky, and retro switch profiles, double-confirmation factory resets, and private diagnostic feeds." }
+      ]
+    },
+    {
       version: "v1.2.0",
       date: "May 2026",
       tagline: "The High-Fidelity & Bento Release",
-      isLatest: true,
+      isLatest: false,
       bullets: [
         { type: "acoustics", title: "Creamy & 8-Bit Switch Profiles", text: "Integrated premium Velvet (Creamy) and Neon (8-bit) high-fidelity mechanical sound packs." },
         { type: "features", title: "Under-3.5ms Web Synthesis", text: "Engineered ultra-low-latency Web Audio API synthesizer node with spatial panner nodes." },
