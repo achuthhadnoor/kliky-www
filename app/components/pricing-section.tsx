@@ -39,7 +39,7 @@ export function PricingSection() {
     }
   };
 
-  const handleSubmitWaitlist = (e: React.FormEvent) => {
+  const handleSubmitWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Simple Email Regex Validation
@@ -56,11 +56,36 @@ export function PricingSection() {
     setValidationError(null);
     setIsSubmitting(true);
 
-    // Simulate database registration call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    let platform = "Unknown";
+    if (typeof window !== "undefined") {
+      const ua = window.navigator.userAgent.toLowerCase();
+      if (ua.includes("mac")) platform = "macOS";
+      else if (ua.includes("win")) platform = "Windows";
+      else if (ua.includes("linux")) platform = "Linux";
+    }
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          platform,
+          source: "Pricing Section Waitlist"
+        })
+      });
+      const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to register waitlist entry");
+      }
+
       setIsSubmitted(true);
-    }, 1200);
+    } catch (err: any) {
+      setValidationError(err.message || "An unexpected network error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

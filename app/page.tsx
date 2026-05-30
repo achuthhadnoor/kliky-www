@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { LeftSidebar } from "./components/left-sidebar";
 import { CenterPlayground } from "./components/center-playground";
 import { RightSidebar } from "./components/right-sidebar";
@@ -105,9 +106,13 @@ export default function Home() {
         <div className="flex items-center gap-4 flex-wrap justify-center">
           <ThemeSwitch />
           <span className="hidden lg:inline">•</span>
-          <a href="#" className="hover:text-brand transition">Privacy Policy</a>
+          <Link href="/privacy" className="hover:text-brand transition">Privacy Policy</Link>
           <span>•</span>
-          <a href="#" className="hover:text-brand transition">Terms of Service</a>
+          <Link href="/terms" className="hover:text-brand transition">Terms of Service</Link>
+          <span>•</span>
+          <Link href="/setup" className="hover:text-brand transition">macOS Setup Guide</Link>
+          <span>•</span>
+          <Link href="/packs" className="hover:text-brand transition">Sound Packs</Link>
         </div>
       </footer>
     </div>

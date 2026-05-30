@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useGitHubReleases } from "../hooks/use-github-releases";
 
 export function LeftSidebar() {
@@ -87,6 +88,17 @@ export function LeftSidebar() {
           </svg>
           Download for Windows
         </a>
+
+        {/* macOS Setup Instructions button */}
+        <Link
+          href="/setup"
+          className="flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-[10px] font-bold text-brand hover:text-brand-hover hover:bg-brand/5 border border-dashed border-brand/20 hover:border-brand/40 transition cursor-pointer select-none font-mono uppercase tracking-wider mt-1 bg-brand/[0.01]"
+        >
+          <svg className="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          </svg>
+          macOS: Can&apos;t open? Setup Guide
+        </Link>
 
         <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 dark:text-zinc-500 px-1 pt-1 select-none">
           <span>{latestVersion} (Universal)</span>
