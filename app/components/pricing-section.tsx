@@ -75,7 +75,7 @@ export function PricingSection() {
         })
       });
       const data = await res.json();
-      
+
       if (!res.ok) {
         throw new Error(data.error || "Failed to register waitlist entry");
       }
@@ -169,10 +169,10 @@ export function PricingSection() {
           </div>
 
           <a
-            href="#"
+            href="https://buy.polar.sh/polar_cl_O7avncCbfK2g8xhHOIF2cKRo1Gw9YsvmUVmja28WeJ3"
             className="w-full text-center py-3 px-4 rounded-xl border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 text-xs font-bold tracking-wide transition-all shadow-sm cursor-pointer select-none font-sans"
           >
-            Start Free Trial
+            Buy now
           </a>
         </div>
 
