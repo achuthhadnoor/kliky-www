@@ -31,8 +31,12 @@ const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes cache time
 
 export function useGitHubReleases(): UseGitHubReleasesResult {
   const [latestVersion, setLatestVersion] = useState("v1.2.0");
-  const [macUrl, setMacUrl] = useState("https://github.com/achuthhadnoor/kliky/releases");
-  const [winUrl, setWinUrl] = useState("https://github.com/achuthhadnoor/kliky/releases");
+  const [macUrl, setMacUrl] = useState(
+    "https://github.com/achuthhadnoor/kliky-www/releases",
+  );
+  const [winUrl, setWinUrl] = useState(
+    "https://github.com/achuthhadnoor/kliky-www/releases",
+  );
   const [releases, setReleases] = useState<GitHubRelease[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +46,7 @@ export function useGitHubReleases(): UseGitHubReleasesResult {
       if (typeof window !== "undefined") {
         const cachedData = localStorage.getItem(CACHE_KEY);
         const cachedExpiry = localStorage.getItem(CACHE_EXPIRY_KEY);
-        
+
         if (cachedData && cachedExpiry && Date.now() < parseInt(cachedExpiry)) {
           try {
             const parsed = JSON.parse(cachedData) as GitHubRelease[];
@@ -56,21 +60,28 @@ export function useGitHubReleases(): UseGitHubReleasesResult {
       }
 
       try {
-        const response = await fetch("https://api.github.com/repos/achuthhadnoor/kliky/releases");
+        const response = await fetch(
+          "https://api.github.com/repos/achuthhadnoor/kliky-www/releases",
+        );
         if (!response.ok) {
-          console.warn(`GitHub API issue (Status: ${response.status}). Using fallback download links.`);
+          console.warn(
+            `GitHub API issue (Status: ${response.status}). Using fallback download links.`,
+          );
           setLoading(false);
           return;
         }
-        
-        const data = await response.json() as GitHubRelease[];
-        
+
+        const data = (await response.json()) as GitHubRelease[];
+
         // Store in local storage cache
         if (typeof window !== "undefined" && data && data.length > 0) {
           localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-          localStorage.setItem(CACHE_EXPIRY_KEY, (Date.now() + CACHE_DURATION).toString());
+          localStorage.setItem(
+            CACHE_EXPIRY_KEY,
+            (Date.now() + CACHE_DURATION).toString(),
+          );
         }
-        
+
         processReleases(data);
       } catch (error) {
         console.error("Error fetching GitHub releases:", error);
@@ -82,9 +93,9 @@ export function useGitHubReleases(): UseGitHubReleasesResult {
 
     function processReleases(data: GitHubRelease[]) {
       if (!Array.isArray(data) || data.length === 0) return;
-      
+
       setReleases(data);
-      
+
       // Find the latest release (first entry in list)
       const latest = data[0];
       setLatestVersion(latest.tag_name);
@@ -99,8 +110,8 @@ export function useGitHubReleases(): UseGitHubReleasesResult {
           const name = asset.name.toLowerCase();
           // macOS binary extensions matches
           if (
-            name.endsWith(".dmg") || 
-            name.endsWith(".pkg") || 
+            name.endsWith(".dmg") ||
+            name.endsWith(".pkg") ||
             (name.includes("mac") && name.endsWith(".zip")) ||
             (name.includes("darwin") && name.endsWith(".zip"))
           ) {
@@ -108,8 +119,8 @@ export function useGitHubReleases(): UseGitHubReleasesResult {
           }
           // Windows binary extensions matches
           if (
-            name.endsWith(".msi") || 
-            name.endsWith(".exe") || 
+            name.endsWith(".msi") ||
+            name.endsWith(".exe") ||
             (name.includes("win") && name.endsWith(".zip")) ||
             (name.includes("pc") && name.endsWith(".zip"))
           ) {
